@@ -3,24 +3,80 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D8071022328D7B70073C578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8071012328D7B70073C578 /* AppDelegate.swift */; };
-		4D8071042328D7B70073C578 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8071032328D7B70073C578 /* ViewController.swift */; };
+		1CCD730B99D2F8534C9C2BA9 /* Pods_ProteinEnergyRatio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2942B6E30E880992DF13911F /* Pods_ProteinEnergyRatio.framework */; };
+		4D6B1D41236719A3006C30B9 /* ProteinEnergyRatio_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D6B1D38236719A3006C30B9 /* ProteinEnergyRatio_iOS.framework */; };
+		4D6B1D48236719A3006C30B9 /* ProteinEnergyRatio_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6B1D47236719A3006C30B9 /* ProteinEnergyRatio_iOSTests.swift */; };
+		4D6B1D4A236719A3006C30B9 /* ProteinEnergyRatio_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D6B1D3A236719A3006C30B9 /* ProteinEnergyRatio_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4D6B1D4D236719A3006C30B9 /* ProteinEnergyRatio_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D6B1D38236719A3006C30B9 /* ProteinEnergyRatio_iOS.framework */; };
+		4D6B1D4E236719A3006C30B9 /* ProteinEnergyRatio_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4D6B1D38236719A3006C30B9 /* ProteinEnergyRatio_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4D6B1D56236719C2006C30B9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8071032328D7B70073C578 /* MainViewController.swift */; };
+		4D6B1D5823671A68006C30B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8071012328D7B70073C578 /* AppDelegate.swift */; };
+		4D6B1D5923671A74006C30B9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D80711E2328D8A20073C578 /* NetworkManager.swift */; };
+		4D6B1D5A23671A77006C30B9 /* FoodService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D80711B2328D8730073C578 /* FoodService.swift */; };
+		4D6B1D5B23671A7A006C30B9 /* SearchResultsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8071152328D7FE0073C578 /* SearchResultsTableController.swift */; };
+		4D6B1D5C23671A7D006C30B9 /* StationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8071142328D7FE0073C578 /* StationSearchViewController.swift */; };
+		4D6B1D5D23671A8E006C30B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D8071082328D7B90073C578 /* Assets.xcassets */; };
+		4D6B1D6223672330006C30B9 /* SliderTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6B1D6123672330006C30B9 /* SliderTextFieldView.swift */; };
 		4D8071092328D7B90073C578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D8071082328D7B90073C578 /* Assets.xcassets */; };
 		4D80710C2328D7B90073C578 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D80710A2328D7B90073C578 /* LaunchScreen.storyboard */; };
-		4D8071172328D7FE0073C578 /* StationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8071142328D7FE0073C578 /* StationSearchViewController.swift */; };
-		4D8071182328D7FE0073C578 /* SearchResultsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8071152328D7FE0073C578 /* SearchResultsTableController.swift */; };
-		4D80711C2328D8730073C578 /* FoodService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D80711B2328D8730073C578 /* FoodService.swift */; };
-		4D80711F2328D8A20073C578 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D80711E2328D8A20073C578 /* NetworkManager.swift */; };
+		57D820C41099AF413B30ED9F /* Pods_ProteinEnergyRatio_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7583E8E396E41C0C51446927 /* Pods_ProteinEnergyRatio_iOS.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4D6B1D42236719A3006C30B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4D8070F62328D7B70073C578 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D6B1D37236719A3006C30B9;
+			remoteInfo = "ProteinEnergyRatio-iOS";
+		};
+		4D6B1D44236719A3006C30B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4D8070F62328D7B70073C578 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D8070FD2328D7B70073C578;
+			remoteInfo = ProteinEnergyRatio;
+		};
+		4D6B1D4B236719A3006C30B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4D8070F62328D7B70073C578 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D6B1D37236719A3006C30B9;
+			remoteInfo = "ProteinEnergyRatio-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4D6B1D54236719A3006C30B9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4D6B1D4E236719A3006C30B9 /* ProteinEnergyRatio_iOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2942B6E30E880992DF13911F /* Pods_ProteinEnergyRatio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProteinEnergyRatio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D6B1D38236719A3006C30B9 /* ProteinEnergyRatio_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProteinEnergyRatio_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D6B1D3A236719A3006C30B9 /* ProteinEnergyRatio_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProteinEnergyRatio_iOS.h; sourceTree = "<group>"; };
+		4D6B1D3B236719A3006C30B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D6B1D40236719A3006C30B9 /* ProteinEnergyRatio-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ProteinEnergyRatio-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D6B1D47236719A3006C30B9 /* ProteinEnergyRatio_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProteinEnergyRatio_iOSTests.swift; sourceTree = "<group>"; };
+		4D6B1D49236719A3006C30B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D6B1D5E23671B7A006C30B9 /* ProteinEnergyRatio.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ProteinEnergyRatio.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		4D6B1D6123672330006C30B9 /* SliderTextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SliderTextFieldView.swift; path = "ProteinEnergyRatio-iOS/SliderTextFieldView.swift"; sourceTree = SOURCE_ROOT; };
 		4D8070FE2328D7B70073C578 /* ProteinEnergyRatio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProteinEnergyRatio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D8071012328D7B70073C578 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4D8071032328D7B70073C578 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4D8071032328D7B70073C578 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4D8071082328D7B90073C578 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D80710B2328D7B90073C578 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D80710D2328D7B90073C578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -28,24 +84,76 @@
 		4D8071152328D7FE0073C578 /* SearchResultsTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsTableController.swift; sourceTree = "<group>"; };
 		4D80711B2328D8730073C578 /* FoodService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodService.swift; sourceTree = "<group>"; };
 		4D80711E2328D8A20073C578 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		7583E8E396E41C0C51446927 /* Pods_ProteinEnergyRatio_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProteinEnergyRatio_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		875EF0E868186C6FA24F106D /* Pods-ProteinEnergyRatio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProteinEnergyRatio.release.xcconfig"; path = "Target Support Files/Pods-ProteinEnergyRatio/Pods-ProteinEnergyRatio.release.xcconfig"; sourceTree = "<group>"; };
+		A78D6DE14CFAB97C7FEA65F8 /* Pods-ProteinEnergyRatio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProteinEnergyRatio.debug.xcconfig"; path = "Target Support Files/Pods-ProteinEnergyRatio/Pods-ProteinEnergyRatio.debug.xcconfig"; sourceTree = "<group>"; };
+		BF4588A294D5C86DAE8A48E6 /* Pods-ProteinEnergyRatio-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProteinEnergyRatio-iOS.release.xcconfig"; path = "Target Support Files/Pods-ProteinEnergyRatio-iOS/Pods-ProteinEnergyRatio-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		E6C5B8D24A20236AC1EC7493 /* Pods-ProteinEnergyRatio-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProteinEnergyRatio-iOS.debug.xcconfig"; path = "Target Support Files/Pods-ProteinEnergyRatio-iOS/Pods-ProteinEnergyRatio-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4D6B1D35236719A3006C30B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				57D820C41099AF413B30ED9F /* Pods_ProteinEnergyRatio_iOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D6B1D3D236719A3006C30B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D6B1D41236719A3006C30B9 /* ProteinEnergyRatio_iOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4D8070FB2328D7B70073C578 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D6B1D4D236719A3006C30B9 /* ProteinEnergyRatio_iOS.framework in Frameworks */,
+				1CCD730B99D2F8534C9C2BA9 /* Pods_ProteinEnergyRatio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D6B1D39236719A3006C30B9 /* ProteinEnergyRatio-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				4D8071032328D7B70073C578 /* MainViewController.swift */,
+				4D6B1D6123672330006C30B9 /* SliderTextFieldView.swift */,
+				4D80711D2328D8970073C578 /* Networking */,
+				4D80711A2328D8610073C578 /* Service */,
+				4D8071192328D8190073C578 /* Search */,
+				4D8071082328D7B90073C578 /* Assets.xcassets */,
+				4D6B1D3A236719A3006C30B9 /* ProteinEnergyRatio_iOS.h */,
+				4D6B1D3B236719A3006C30B9 /* Info.plist */,
+			);
+			path = "ProteinEnergyRatio-iOS";
+			sourceTree = "<group>";
+		};
+		4D6B1D46236719A3006C30B9 /* ProteinEnergyRatio-iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				4D6B1D47236719A3006C30B9 /* ProteinEnergyRatio_iOSTests.swift */,
+				4D6B1D49236719A3006C30B9 /* Info.plist */,
+			);
+			path = "ProteinEnergyRatio-iOSTests";
+			sourceTree = "<group>";
+		};
 		4D8070F52328D7B70073C578 = {
 			isa = PBXGroup;
 			children = (
+				4D6B1D5E23671B7A006C30B9 /* ProteinEnergyRatio.playground */,
 				4D8071002328D7B70073C578 /* ProteinEnergyRatio */,
+				4D6B1D39236719A3006C30B9 /* ProteinEnergyRatio-iOS */,
+				4D6B1D46236719A3006C30B9 /* ProteinEnergyRatio-iOSTests */,
 				4D8070FF2328D7B70073C578 /* Products */,
+				BDC49A3485475026DF31540B /* Pods */,
+				6B23EDDF865D5DE69AB18CB5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -53,6 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				4D8070FE2328D7B70073C578 /* ProteinEnergyRatio.app */,
+				4D6B1D38236719A3006C30B9 /* ProteinEnergyRatio_iOS.framework */,
+				4D6B1D40236719A3006C30B9 /* ProteinEnergyRatio-iOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,11 +171,6 @@
 			isa = PBXGroup;
 			children = (
 				4D8071012328D7B70073C578 /* AppDelegate.swift */,
-				4D8071032328D7B70073C578 /* ViewController.swift */,
-				4D80711D2328D8970073C578 /* Networking */,
-				4D80711A2328D8610073C578 /* Service */,
-				4D8071192328D8190073C578 /* Search */,
-				4D8071082328D7B90073C578 /* Assets.xcassets */,
 				4D80710A2328D7B90073C578 /* LaunchScreen.storyboard */,
 				4D80710D2328D7B90073C578 /* Info.plist */,
 			);
@@ -97,20 +202,93 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		6B23EDDF865D5DE69AB18CB5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2942B6E30E880992DF13911F /* Pods_ProteinEnergyRatio.framework */,
+				7583E8E396E41C0C51446927 /* Pods_ProteinEnergyRatio_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BDC49A3485475026DF31540B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A78D6DE14CFAB97C7FEA65F8 /* Pods-ProteinEnergyRatio.debug.xcconfig */,
+				875EF0E868186C6FA24F106D /* Pods-ProteinEnergyRatio.release.xcconfig */,
+				E6C5B8D24A20236AC1EC7493 /* Pods-ProteinEnergyRatio-iOS.debug.xcconfig */,
+				BF4588A294D5C86DAE8A48E6 /* Pods-ProteinEnergyRatio-iOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		4D6B1D33236719A3006C30B9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D6B1D4A236719A3006C30B9 /* ProteinEnergyRatio_iOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		4D8070FD2328D7B70073C578 /* ProteinEnergyRatio */ = {
+		4D6B1D37236719A3006C30B9 /* ProteinEnergyRatio-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4D8071102328D7B90073C578 /* Build configuration list for PBXNativeTarget "ProteinEnergyRatio" */;
+			buildConfigurationList = 4D6B1D53236719A3006C30B9 /* Build configuration list for PBXNativeTarget "ProteinEnergyRatio-iOS" */;
 			buildPhases = (
-				4D8070FA2328D7B70073C578 /* Sources */,
-				4D8070FB2328D7B70073C578 /* Frameworks */,
-				4D8070FC2328D7B70073C578 /* Resources */,
+				AF0C359A4CC593EFEB381F8F /* [CP] Check Pods Manifest.lock */,
+				4D6B1D33236719A3006C30B9 /* Headers */,
+				4D6B1D34236719A3006C30B9 /* Sources */,
+				4D6B1D35236719A3006C30B9 /* Frameworks */,
+				4D6B1D36236719A3006C30B9 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+			);
+			name = "ProteinEnergyRatio-iOS";
+			productName = "ProteinEnergyRatio-iOS";
+			productReference = 4D6B1D38236719A3006C30B9 /* ProteinEnergyRatio_iOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4D6B1D3F236719A3006C30B9 /* ProteinEnergyRatio-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D6B1D55236719A3006C30B9 /* Build configuration list for PBXNativeTarget "ProteinEnergyRatio-iOSTests" */;
+			buildPhases = (
+				4D6B1D3C236719A3006C30B9 /* Sources */,
+				4D6B1D3D236719A3006C30B9 /* Frameworks */,
+				4D6B1D3E236719A3006C30B9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4D6B1D43236719A3006C30B9 /* PBXTargetDependency */,
+				4D6B1D45236719A3006C30B9 /* PBXTargetDependency */,
+			);
+			name = "ProteinEnergyRatio-iOSTests";
+			productName = "ProteinEnergyRatio-iOSTests";
+			productReference = 4D6B1D40236719A3006C30B9 /* ProteinEnergyRatio-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4D8070FD2328D7B70073C578 /* ProteinEnergyRatio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D8071102328D7B90073C578 /* Build configuration list for PBXNativeTarget "ProteinEnergyRatio" */;
+			buildPhases = (
+				A7DA122BEE4305E1FFAA4104 /* [CP] Check Pods Manifest.lock */,
+				4D8070FA2328D7B70073C578 /* Sources */,
+				4D8070FB2328D7B70073C578 /* Frameworks */,
+				4D8070FC2328D7B70073C578 /* Resources */,
+				F4A271DAF09B737C9977BAE4 /* [CP] Embed Pods Frameworks */,
+				4D6B1D54236719A3006C30B9 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4D6B1D4C236719A3006C30B9 /* PBXTargetDependency */,
 			);
 			name = ProteinEnergyRatio;
 			productName = ProteinEnergyRatio;
@@ -127,6 +305,13 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = mgopsill;
 				TargetAttributes = {
+					4D6B1D37236719A3006C30B9 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					4D6B1D3F236719A3006C30B9 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 4D8070FD2328D7B70073C578;
+					};
 					4D8070FD2328D7B70073C578 = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
@@ -146,11 +331,28 @@
 			projectRoot = "";
 			targets = (
 				4D8070FD2328D7B70073C578 /* ProteinEnergyRatio */,
+				4D6B1D37236719A3006C30B9 /* ProteinEnergyRatio-iOS */,
+				4D6B1D3F236719A3006C30B9 /* ProteinEnergyRatio-iOSTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4D6B1D36236719A3006C30B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D6B1D5D23671A8E006C30B9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D6B1D3E236719A3006C30B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4D8070FC2328D7B70073C578 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -162,21 +364,119 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A7DA122BEE4305E1FFAA4104 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ProteinEnergyRatio-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF0C359A4CC593EFEB381F8F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ProteinEnergyRatio-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4A271DAF09B737C9977BAE4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProteinEnergyRatio/Pods-ProteinEnergyRatio-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProteinEnergyRatio/Pods-ProteinEnergyRatio-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ProteinEnergyRatio/Pods-ProteinEnergyRatio-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		4D6B1D34236719A3006C30B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D6B1D5923671A74006C30B9 /* NetworkManager.swift in Sources */,
+				4D6B1D5B23671A7A006C30B9 /* SearchResultsTableController.swift in Sources */,
+				4D6B1D5A23671A77006C30B9 /* FoodService.swift in Sources */,
+				4D6B1D6223672330006C30B9 /* SliderTextFieldView.swift in Sources */,
+				4D6B1D5C23671A7D006C30B9 /* StationSearchViewController.swift in Sources */,
+				4D6B1D56236719C2006C30B9 /* MainViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D6B1D3C236719A3006C30B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D6B1D48236719A3006C30B9 /* ProteinEnergyRatio_iOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4D8070FA2328D7B70073C578 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D80711F2328D8A20073C578 /* NetworkManager.swift in Sources */,
-				4D8071042328D7B70073C578 /* ViewController.swift in Sources */,
-				4D8071182328D7FE0073C578 /* SearchResultsTableController.swift in Sources */,
-				4D8071022328D7B70073C578 /* AppDelegate.swift in Sources */,
-				4D8071172328D7FE0073C578 /* StationSearchViewController.swift in Sources */,
-				4D80711C2328D8730073C578 /* FoodService.swift in Sources */,
+				4D6B1D5823671A68006C30B9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4D6B1D43236719A3006C30B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D6B1D37236719A3006C30B9 /* ProteinEnergyRatio-iOS */;
+			targetProxy = 4D6B1D42236719A3006C30B9 /* PBXContainerItemProxy */;
+		};
+		4D6B1D45236719A3006C30B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D8070FD2328D7B70073C578 /* ProteinEnergyRatio */;
+			targetProxy = 4D6B1D44236719A3006C30B9 /* PBXContainerItemProxy */;
+		};
+		4D6B1D4C236719A3006C30B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D6B1D37236719A3006C30B9 /* ProteinEnergyRatio-iOS */;
+			targetProxy = 4D6B1D4B236719A3006C30B9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4D80710A2328D7B90073C578 /* LaunchScreen.storyboard */ = {
@@ -190,6 +490,104 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4D6B1D4F236719A3006C30B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6C5B8D24A20236AC1EC7493 /* Pods-ProteinEnergyRatio-iOS.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = EYT7Q6838H;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "ProteinEnergyRatio-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mgopsill.ProteinEnergyRatio-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4D6B1D50236719A3006C30B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF4588A294D5C86DAE8A48E6 /* Pods-ProteinEnergyRatio-iOS.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = EYT7Q6838H;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "ProteinEnergyRatio-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mgopsill.ProteinEnergyRatio-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4D6B1D51236719A3006C30B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = EYT7Q6838H;
+				INFOPLIST_FILE = "ProteinEnergyRatio-iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mgopsill.ProteinEnergyRatio-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProteinEnergyRatio.app/ProteinEnergyRatio";
+			};
+			name = Debug;
+		};
+		4D6B1D52236719A3006C30B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = EYT7Q6838H;
+				INFOPLIST_FILE = "ProteinEnergyRatio-iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mgopsill.ProteinEnergyRatio-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProteinEnergyRatio.app/ProteinEnergyRatio";
+			};
+			name = Release;
+		};
 		4D80710E2328D7B90073C578 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -308,7 +706,9 @@
 		};
 		4D8071112328D7B90073C578 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A78D6DE14CFAB97C7FEA65F8 /* Pods-ProteinEnergyRatio.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EYT7Q6838H;
@@ -326,7 +726,9 @@
 		};
 		4D8071122328D7B90073C578 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 875EF0E868186C6FA24F106D /* Pods-ProteinEnergyRatio.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EYT7Q6838H;
@@ -345,6 +747,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4D6B1D53236719A3006C30B9 /* Build configuration list for PBXNativeTarget "ProteinEnergyRatio-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D6B1D4F236719A3006C30B9 /* Debug */,
+				4D6B1D50236719A3006C30B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4D6B1D55236719A3006C30B9 /* Build configuration list for PBXNativeTarget "ProteinEnergyRatio-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D6B1D51236719A3006C30B9 /* Debug */,
+				4D6B1D52236719A3006C30B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4D8070F92328D7B70073C578 /* Build configuration list for PBXProject "ProteinEnergyRatio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
