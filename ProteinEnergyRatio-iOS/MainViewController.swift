@@ -24,6 +24,7 @@ public class MainViewController: UIViewController {
     private let percentFatLabel = UILabel()
     private let percentCarbLabel = UILabel()
     private let proteinEnergyRatioLabel = UILabel()
+    private let nutritionalVectorLabel = UILabel()
 
     private let bag = DisposeBag()
     
@@ -98,6 +99,13 @@ public class MainViewController: UIViewController {
             make.leading.trailing.equalToSuperview()
         }
         
+        view.addSubview(nutritionalVectorLabel)
+        nutritionalVectorLabel.backgroundColor = .magenta
+        nutritionalVectorLabel.snp.makeConstraints { make in
+            make.top.equalTo(proteinEnergyRatioLabel.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+        }
+        
     }
     
     func bindUI() {
@@ -105,7 +113,9 @@ public class MainViewController: UIViewController {
             percentProteinLabelValue,
             percentFatLabelValue,
             percentCarbLabelValue,
-            proteinRatioValue) =
+            proteinRatioValue,
+            nutritionalVectorValue,
+            carbNotLessThanFiberValue) =
             mainViewModel(proteinSliderInput: proteinSlider.value.asObservable(),
                           fatSliderInput: fatSlider.value.asObservable(),
                           carbohydrateSliderInput: carbohydrateSlider.value.asObservable(),
@@ -114,8 +124,9 @@ public class MainViewController: UIViewController {
         percentProteinLabelValue.map { "Protein percent: \(String($0)) "}.drive(percentProteinLabel.rx.text).disposed(by: bag)
         percentFatLabelValue.map { "Fat percent: \(String($0)) "}.drive(percentFatLabel.rx.text).disposed(by: bag)
         percentCarbLabelValue.map { "Carb percent: \(String($0)) "}.drive(percentCarbLabel.rx.text).disposed(by: bag)
-        proteinRatioValue.map { "P:E \(String($0)) "}.drive(proteinEnergyRatioLabel.rx.text).disposed(by: bag)
-
+        proteinRatioValue.map { "P:E: \(String($0)) "}.drive(proteinEnergyRatioLabel.rx.text).disposed(by: bag)
+        nutritionalVectorValue.map { "Nutritional Vector: \(String($0)) "}.drive(nutritionalVectorLabel.rx.text).disposed(by: bag)
+        carbNotLessThanFiberValue.drive(carbohydrateSlider.inputOverride).disposed(by: bag)
     }
 }
 
@@ -129,6 +140,8 @@ func mainViewModel(
     Driver<Int>,
     Driver<Int>,
     Driver<Int>,
+    Driver<Float>,
+    Driver<Float>,
     Driver<Float>
     ) {
         
@@ -159,7 +172,22 @@ func mainViewModel(
             return returnValue > 0 ? returnValue : 0
         }
         
-        let proteinCalories = proteinSliderInput.map(proteinAsCalories).debug("proteincals")
+        func vector(_ ratio: Float) -> Float {
+            let vector = atan(ratio) * 180 / Float.pi
+            return (vector * 10).rounded(.toNearestOrEven) / 10
+        }
+        
+////        Observable.combineLatest(fiberSliderInput, carbohydrateSliderInput.takeLast(1))
+//
+//        fiberSliderInput.concat(carbohydrateSliderInput)
+//        // if fiberSliderInput changes then get carb input and check it
+//
+//
+        
+        let carbNotLessThanFiberDriver = fiberSliderInput.asDriver(onErrorJustReturn: 0)
+        
+        
+        let proteinCalories = proteinSliderInput.map(proteinAsCalories)
         let fatCalories = fatSliderInput.map(fatAsCalories)
         let carbohydrateCalories = Observable.combineLatest(carbohydrateSliderInput, fiberSliderInput).map(carbsMinusFiber)
         
@@ -169,7 +197,7 @@ func mainViewModel(
         let percentCarbDriver = Observable.combineLatest(caloriesDriver.asObservable().map(Float.init), carbohydrateCalories.map(Float.init)).map(percent).asDriver(onErrorJustReturn: 0)
         let proteinRatioDriver = Observable.combineLatest(proteinSliderInput, fatSliderInput, carbohydrateSliderInput, fiberSliderInput).map(ratio).asDriver(onErrorJustReturn: 0)
         
-        
+        let nutritonalVectorDriver = proteinRatioDriver.asObservable().map(vector).asDriver(onErrorJustReturn: 0)
 //        var ratio = fixNum(protein / (fat + carbohydrates - fiber));
 //
 //        ratio = Math.round(ratio * 100) / 100;
@@ -185,6 +213,8 @@ func mainViewModel(
             percentProteinDriver,
             percentFatDriver,
             percentCarbDriver,
-            proteinRatioDriver
+            proteinRatioDriver,
+            nutritonalVectorDriver,
+            carbNotLessThanFiberDriver
         )
 }

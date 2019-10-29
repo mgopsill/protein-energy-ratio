@@ -12,6 +12,7 @@ import UIKit
 class SliderTextFieldView: UIView {
     
     let value = BehaviorRelay<Float>(value: 0.0)
+    var inputOverride = BehaviorRelay<Float>(value: 0.0)
     
     private let label = UILabel()
     private let slider = UISlider()
@@ -59,10 +60,11 @@ class SliderTextFieldView: UIView {
     
     private func bindUI() {
         let (sliderValue, floatValue) = sliderTextFieldViewModel(sliderInput: slider.rx.value.asObservable(),
-                                                                     textFieldInput: textField.rx.value.asObservable())
+                                                                 textFieldInput: textField.rx.value.asObservable(),
+                                                                 inputOverride: inputOverride.asObservable())
         sliderValue.drive(textField.rx.text).disposed(by: bag)
         floatValue.drive(slider.rx.value).disposed(by: bag)
-        floatValue.debug("textField Value").drive(value).disposed(by: bag)
+        floatValue.drive(value).disposed(by: bag)
     }
     
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -70,7 +72,8 @@ class SliderTextFieldView: UIView {
 
 func sliderTextFieldViewModel(
     sliderInput: Observable<Float>,
-    textFieldInput: Observable<String?>
+    textFieldInput: Observable<String?>,
+    inputOverride: Observable<Float>
     ) -> (
     Driver<String>,
     Driver<Float>
@@ -94,6 +97,11 @@ func sliderTextFieldViewModel(
             return String((float * 10).rounded(.toNearestOrEven) / 10)
         }
         
+        func noLessThan(_ a: Float, _ b: Float) -> Float {
+            if b < a { return a }
+            return b
+        }
+        
         let restrictedTextFieldInput = textFieldInput
             .compactMap(nothing)
             .map(allowOnlyDecimals)
@@ -106,8 +114,17 @@ func sliderTextFieldViewModel(
             .map(Float.init)
             .compactMap(nothing)
         
-        let mergedStringOutputs = Observable.merge(restrictedTextFieldInput, sliderInputAsString).asDriver(onErrorJustReturn: "")
-        let mergedFloatOutputs = Observable.merge(textAsFloat, sliderInput).asDriver(onErrorJustReturn: 0.0)
+        
+        let carbsNotHigherThanFiber = Observable.combineLatest(inputOverride, sliderInput).map(noLessThan).debug()
+        let carbsNotHigherText = carbsNotHigherThanFiber.map(floatToString)
+        
+        let floatInputs = [textAsFloat.debug("textAsFloat"),
+                           sliderInput.debug("sliderInput"),
+                           carbsNotHigherThanFiber.debug("inputOverridedebug")].compactMap(nothing)
+//        inputOverride.debug()
+        
+        let mergedStringOutputs = Observable.merge(restrictedTextFieldInput, sliderInputAsString, carbsNotHigherText).asDriver(onErrorJustReturn: "")
+        let mergedFloatOutputs = Observable.merge(floatInputs).asDriver(onErrorJustReturn: 0.0)
 
         return (
             mergedStringOutputs.asDriver(onErrorJustReturn: ""),
