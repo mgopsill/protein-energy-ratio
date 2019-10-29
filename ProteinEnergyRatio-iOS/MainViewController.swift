@@ -176,16 +176,8 @@ func mainViewModel(
             let vector = atan(ratio) * 180 / Float.pi
             return (vector * 10).rounded(.toNearestOrEven) / 10
         }
-        
-////        Observable.combineLatest(fiberSliderInput, carbohydrateSliderInput.takeLast(1))
-//
-//        fiberSliderInput.concat(carbohydrateSliderInput)
-//        // if fiberSliderInput changes then get carb input and check it
-//
-//
-        
+
         let carbNotLessThanFiberDriver = fiberSliderInput.asDriver(onErrorJustReturn: 0)
-        
         
         let proteinCalories = proteinSliderInput.map(proteinAsCalories)
         let fatCalories = fatSliderInput.map(fatAsCalories)
@@ -198,16 +190,7 @@ func mainViewModel(
         let proteinRatioDriver = Observable.combineLatest(proteinSliderInput, fatSliderInput, carbohydrateSliderInput, fiberSliderInput).map(ratio).asDriver(onErrorJustReturn: 0)
         
         let nutritonalVectorDriver = proteinRatioDriver.asObservable().map(vector).asDriver(onErrorJustReturn: 0)
-//        var ratio = fixNum(protein / (fat + carbohydrates - fiber));
-//
-//        ratio = Math.round(ratio * 100) / 100;
-//
-//        var nutritionalVector = Math.atan(ratio)*180/Math.PI;
-//
-//        nutritionalVector = Math.round(nutritionalVector * 10) / 10;
 
-        // TODO: NVector
-        // TODO: Fiber vs carb slider logic
         return (
             caloriesDriver,
             percentProteinDriver,
