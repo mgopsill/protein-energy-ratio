@@ -12,7 +12,7 @@ import UIKit
 class SliderTextFieldView: UIView {
     
     let value = BehaviorRelay<Float>(value: 0.0)
-    var inputOverride = BehaviorRelay<Float>(value: 0.0)
+    let inputOverride = BehaviorRelay<Float>(value: 0.0)
     
     private let label = UILabel()
     private let slider = UISlider()
@@ -113,15 +113,12 @@ func sliderTextFieldViewModel(
         let textAsFloat = restrictedTextFieldInput
             .map(Float.init)
             .compactMap(nothing)
-        
-        
-        let carbsNotHigherThanFiber = Observable.combineLatest(inputOverride, sliderInput).map(noLessThan).debug()
+
+        let carbsNotHigherThanFiber = Observable.combineLatest(inputOverride, sliderInput).map(noLessThan)
         let carbsNotHigherText = carbsNotHigherThanFiber.map(floatToString)
         
-        let floatInputs = [textAsFloat.debug("textAsFloat"),
-                           sliderInput.debug("sliderInput"),
-                           carbsNotHigherThanFiber.debug("inputOverridedebug")].compactMap(nothing)
-//        inputOverride.debug()
+        let floatInputs = [textAsFloat,
+                            carbsNotHigherThanFiber]
         
         let mergedStringOutputs = Observable.merge(restrictedTextFieldInput, sliderInputAsString, carbsNotHigherText).asDriver(onErrorJustReturn: "")
         let mergedFloatOutputs = Observable.merge(floatInputs).asDriver(onErrorJustReturn: 0.0)
