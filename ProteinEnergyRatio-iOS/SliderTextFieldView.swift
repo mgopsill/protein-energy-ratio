@@ -73,7 +73,8 @@ class SliderTextFieldView: UIView {
         
         let (sliderValue, floatValue) = sliderTextFieldViewModel(sliderInput: Observable.merge(sliderInput, overrideInput),
                                                                  textFieldInput: textField.rx.value.asObservable(),
-                                                                 inputOverride: inputOverride.asObservable())
+                                                                 inputOverride: inputOverride.asObservable(),
+                                                                 textFieldEndEditing: textField.rx.controlEvent(.editingDidEnd).asObservable())
         sliderValue.drive(textField.rx.text).disposed(by: bag)
         floatValue.drive(slider.rx.value).disposed(by: bag)
         floatValue.drive(value).disposed(by: bag)
@@ -85,11 +86,19 @@ class SliderTextFieldView: UIView {
 func sliderTextFieldViewModel(
     sliderInput: Observable<Float>,
     textFieldInput: Observable<String?>,
-    inputOverride: Observable<Float>
+    inputOverride: Observable<Float>,
+    textFieldEndEditing: Observable<()>
     ) -> (
     Driver<String>,
     Driver<Float>
     ) {
+        
+        func noLessThan(_ a: Float, _ b: Float) -> Float {
+            if a == 0 { return b }
+            
+            if b <= a { return a }
+            return b
+        }
         
         func nothing<T>(_ element: T) -> T {
             return element
@@ -121,10 +130,18 @@ func sliderTextFieldViewModel(
             .map(Float.init)
             .compactMap(nothing)
         
-        let floatInputs = [textAsFloat,
-                           sliderInput]
+        let textInput = textAsFloat.withLatestFrom(inputOverride) { a, b in return (a, b) }.map(noLessThan).debug()
+        let notLowerThanOverrideFloat = textFieldEndEditing.withLatestFrom(textInput)
+        let notLowerThanOverrideString = notLowerThanOverrideFloat.map(floatToString)
         
-        let mergedStringOutputs = Observable.merge(restrictedTextFieldInput, sliderInputAsString).asDriver(onErrorJustReturn: "")
+        let floatInputs = [textInput,
+                           sliderInput,
+                           notLowerThanOverrideFloat]
+        let textInputs = [restrictedTextFieldInput,
+                          sliderInputAsString,
+                          notLowerThanOverrideString]
+        
+        let mergedStringOutputs = Observable.merge(textInputs).asDriver(onErrorJustReturn: "")
         let mergedFloatOutputs = Observable.merge(floatInputs).asDriver(onErrorJustReturn: 0.0)
     
         return (
