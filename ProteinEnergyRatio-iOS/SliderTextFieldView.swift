@@ -56,6 +56,8 @@ class SliderTextFieldView: UIView {
             make.trailing.equalToSuperview()
             make.leading.equalTo(slider.snp.trailing)
         }
+        
+        textField.addDoneToolbar().rx.tap.bind { self.endEditing(true) }.disposed(by: bag)
     }
     
     private func bindUI() {
@@ -124,7 +126,7 @@ func sliderTextFieldViewModel(
         
         let mergedStringOutputs = Observable.merge(restrictedTextFieldInput, sliderInputAsString).asDriver(onErrorJustReturn: "")
         let mergedFloatOutputs = Observable.merge(floatInputs).asDriver(onErrorJustReturn: 0.0)
-
+    
         return (
             mergedStringOutputs.asDriver(onErrorJustReturn: ""),
             mergedFloatOutputs.asDriver(onErrorJustReturn: 0.0)

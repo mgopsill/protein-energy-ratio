@@ -41,8 +41,8 @@ public class MainViewController: UIViewController {
     }
     
     private func setupViews() {
-        
         view.addSubview(scrollView)
+        scrollView.keyboardDismissMode = .onDrag
         scrollView.snp.makeConstraints { make in
             make.leading.trailing.top.bottom.equalToSuperview()
         }
