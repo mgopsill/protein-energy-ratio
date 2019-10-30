@@ -25,6 +25,7 @@ public class MainViewController: UIViewController {
     private let percentCarbLabel = UILabel()
     private let proteinEnergyRatioLabel = UILabel()
     private let nutritionalVectorLabel = UILabel()
+    private let graph = GraphView()
 
     private let bag = DisposeBag()
     
@@ -33,6 +34,7 @@ public class MainViewController: UIViewController {
         setupViews()
         bindUI()
         view.backgroundColor = .white
+        title = "P:E"
     }
     
     private func setupViews() {
@@ -106,6 +108,14 @@ public class MainViewController: UIViewController {
             make.leading.trailing.equalToSuperview()
         }
         
+        view.addSubview(graph)
+        graph.snp.makeConstraints { make in
+            make.top.equalTo(nutritionalVectorLabel.snp.bottom)
+            make.centerX.equalToSuperview()
+            make.height.width.equalTo(350)
+        }
+        view.layoutIfNeeded()
+        graph.update()
     }
     
     func bindUI() {
@@ -126,6 +136,7 @@ public class MainViewController: UIViewController {
         percentCarbLabelValue.map { "Carb percent: \(String($0)) "}.drive(percentCarbLabel.rx.text).disposed(by: bag)
         proteinRatioValue.map { "P:E: \(String($0)) "}.drive(proteinEnergyRatioLabel.rx.text).disposed(by: bag)
         nutritionalVectorValue.map { "Nutritional Vector: \(String($0)) "}.drive(nutritionalVectorLabel.rx.text).disposed(by: bag)
+        nutritionalVectorValue.map(Int.init).drive(graph.rotationAngle).disposed(by: bag)
         carbNotLessThanFiberValue.drive(carbohydrateSlider.inputOverride).disposed(by: bag)
     }
 }

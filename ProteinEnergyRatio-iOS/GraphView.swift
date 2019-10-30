@@ -1,38 +1,13 @@
-//: A UIKit based Playground for presenting user interface
-  
-import PlaygroundSupport
-import ProteinEnergyRatio_iOS
-import RxCocoa
+//
+//  GraphView.swift
+//  Pods-ProteinEnergyRatio
+//
+//  Created by Mike Gopsill on 29/10/2019.
+//
+
+import RxRelay
 import RxSwift
-import SnapKit
 import UIKit
-
-
-class VC: UIViewController {
-    let graphView = GraphView()
-    let slider = UISlider()
-
-    private let bag = DisposeBag()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        view.addSubview(graphView)
-        graphView.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
-            make.height.width.equalTo(350)
-        }
-        
-        view.addSubview(slider)
-        slider.maximumValue = 90
-        slider.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-        }
-        
-        slider.rx.value.map(Int.init).asDriver(onErrorJustReturn: 0).drive(graphView.rotationAngle)
-        graphView.update()
-    }
-}
 
 class GraphView: UIView {
     
@@ -76,18 +51,16 @@ class GraphView: UIView {
     }
     
     func update() {
-        cont = UIView(frame: CGRect(x: -frame.width, y: 0, width: frame.width * 2, height: frame.width * 2))
-        cont.backgroundColor = .red
         addSubview(cont)
         
-        //        cont.snp.makeConstraints { make in
-        //            make.trailing.top.equalToSuperview()
-        //            make.width.height.equalToSuperview().multipliedBy(2)
-        //        }
+        cont.snp.makeConstraints { make in
+            make.trailing.top.equalToSuperview()
+            make.width.height.equalToSuperview().multipliedBy(2)
+        }
         
         let arrow = UIView(frame: CGRect.zero)
         cont.addSubview(arrow)
-        arrow.backgroundColor = .black
+        arrow.backgroundColor = .blue
         arrow.snp.makeConstraints { make in
             make.trailing.centerY.equalToSuperview()
             make.height.equalTo(4)
@@ -95,9 +68,3 @@ class GraphView: UIView {
         }
     }
 }
-
-// Present the view controller in the Live View window
-let viewController = VC()
-//viewController.preferredContentSize = CGSize(width: 768, height: 1024)
-PlaygroundPage.current.liveView = viewController
-

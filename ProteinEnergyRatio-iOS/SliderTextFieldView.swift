@@ -66,7 +66,7 @@ class SliderTextFieldView: UIView {
             return b
         }
         
-        let sliderInput = slider.rx.value.asObservable()
+        let sliderInput = slider.rx.value.asObservable().withLatestFrom(inputOverride) { a, b in return (b, a) }.map(noLessThan)
         let overrideInput = inputOverride.asObservable().withLatestFrom(value) { a, b in return (a, b) }.map(noLessThan)
         
         let (sliderValue, floatValue) = sliderTextFieldViewModel(sliderInput: Observable.merge(sliderInput, overrideInput),
