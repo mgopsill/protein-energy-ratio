@@ -29,6 +29,8 @@ public class MainViewController: UIViewController {
     private let proteinEnergyRatioLabel = UILabel()
     private let nutritionalVectorLabel = UILabel()
     private let graph = GraphView()
+    private let proteinLabel = UILabel()
+    private let energyLabel = UILabel()
 
     private let bag = DisposeBag()
     
@@ -126,10 +128,25 @@ public class MainViewController: UIViewController {
         graph.snp.makeConstraints { make in
             make.top.equalTo(nutritionalVectorLabel.snp.bottom)
             make.centerX.equalToSuperview()
-            make.height.width.equalTo(350)
+            make.height.width.equalTo(300)
         }
         view.layoutIfNeeded()
         graph.update()
+        
+        containerView.addSubview(energyLabel)
+        energyLabel.text = "ENERGY"
+        energyLabel.snp.makeConstraints { make in
+            make.top.equalTo(graph.snp.bottom).offset(4)
+            make.centerX.equalTo(graph)
+        }
+        
+        containerView.addSubview(proteinLabel)
+        proteinLabel.text = "PROTEIN"
+        proteinLabel.transform = CGAffineTransform(rotationAngle: CGFloat(Double(-90) * Double.pi/180))
+        proteinLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(graph)
+            make.centerX.equalTo((graph).snp.leading).inset((-proteinLabel.intrinsicContentSize.height / 2) - 4)
+        }
     }
     
     func bindUI() {
