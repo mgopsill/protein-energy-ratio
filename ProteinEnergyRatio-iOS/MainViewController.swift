@@ -150,7 +150,7 @@ public class MainViewController: UIViewController {
         percentCarbLabelValue.map { "Carb percent: \(String($0)) "}.drive(percentCarbLabel.rx.text).disposed(by: bag)
         proteinRatioValue.map { "P:E: \(String($0)) "}.drive(proteinEnergyRatioLabel.rx.text).disposed(by: bag)
         nutritionalVectorValue.map { "Nutritional Vector: \(String($0)) "}.drive(nutritionalVectorLabel.rx.text).disposed(by: bag)
-        nutritionalVectorValue.map(Int.init).drive(graph.rotationAngle).disposed(by: bag)
+        nutritionalVectorValue.debug().drive(graph.rotationAngle).disposed(by: bag)
         carbNotLessThanFiberValue.drive(carbohydrateSlider.inputOverride).disposed(by: bag)
     }
 }
@@ -193,13 +193,13 @@ func mainViewModel(
         
         func ratio(_ protein: Float, _ fat: Float, _ carbohydrates: Float, _ fiber: Float) -> Float {
             let ratio = protein / (fat + carbohydrates - fiber)
-            let returnValue = (ratio * 10).rounded(.toNearestOrEven) / 10
+            let returnValue = (ratio * 100).rounded(.toNearestOrEven) / 100
             return returnValue > 0 ? returnValue : 0
         }
         
         func vector(_ ratio: Float) -> Float {
             let vector = atan(ratio) * 180 / Float.pi
-            return (vector * 10).rounded(.toNearestOrEven) / 10
+            return (vector * 100).rounded(.toNearestOrEven) / 100
         }
 
         let carbNotLessThanFiberDriver = fiberSliderInput.asDriver(onErrorJustReturn: 0)

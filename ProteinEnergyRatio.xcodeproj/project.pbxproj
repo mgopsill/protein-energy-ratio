@@ -24,6 +24,7 @@
 		4D8071092328D7B90073C578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D8071082328D7B90073C578 /* Assets.xcassets */; };
 		4D80710C2328D7B90073C578 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D80710A2328D7B90073C578 /* LaunchScreen.storyboard */; };
 		4D92988023698AE900CD9FF0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D92987F23698AE800CD9FF0 /* Extensions.swift */; };
+		4DE70BFA236AD282002EC500 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4DE70BF9236AD282002EC500 /* TODO.txt */; };
 		4DE766F02368892D0077D083 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE766EF2368892D0077D083 /* GraphView.swift */; };
 		57D820C41099AF413B30ED9F /* Pods_ProteinEnergyRatio_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7583E8E396E41C0C51446927 /* Pods_ProteinEnergyRatio_iOS.framework */; };
 /* End PBXBuildFile section */
@@ -87,6 +88,7 @@
 		4D80711B2328D8730073C578 /* FoodService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodService.swift; sourceTree = "<group>"; };
 		4D80711E2328D8A20073C578 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4D92987F23698AE800CD9FF0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4DE70BF9236AD282002EC500 /* TODO.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = TODO.txt; path = ../../TODO.txt; sourceTree = "<group>"; };
 		4DE766EF2368892D0077D083 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		7583E8E396E41C0C51446927 /* Pods_ProteinEnergyRatio_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProteinEnergyRatio_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		875EF0E868186C6FA24F106D /* Pods-ProteinEnergyRatio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProteinEnergyRatio.release.xcconfig"; path = "Target Support Files/Pods-ProteinEnergyRatio/Pods-ProteinEnergyRatio.release.xcconfig"; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 		4D8070F52328D7B70073C578 = {
 			isa = PBXGroup;
 			children = (
+				4DE70BF9236AD282002EC500 /* TODO.txt */,
 				4D6B1D5E23671B7A006C30B9 /* ProteinEnergyRatio.playground */,
 				4D8071002328D7B70073C578 /* ProteinEnergyRatio */,
 				4D6B1D39236719A3006C30B9 /* ProteinEnergyRatio-iOS */,
@@ -365,6 +368,7 @@
 			files = (
 				4D80710C2328D7B90073C578 /* LaunchScreen.storyboard in Resources */,
 				4D8071092328D7B90073C578 /* Assets.xcassets in Resources */,
+				4DE70BFA236AD282002EC500 /* TODO.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

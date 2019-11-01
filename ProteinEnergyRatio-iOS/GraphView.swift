@@ -14,7 +14,7 @@ class GraphView: UIView {
     private let bag = DisposeBag()
     private var cont = UIView()
     
-    let rotationAngle = BehaviorRelay<Int>(value: 80)
+    let rotationAngle = BehaviorRelay<Float>(value: 0)
     
     init() {
         super.init(frame: CGRect.zero)
@@ -37,8 +37,8 @@ class GraphView: UIView {
         }
         
         
-        rotationAngle.asDriver(onErrorJustReturn: 0).drive(onNext: { int in
-            self.transform(int: int)
+        rotationAngle.asDriver(onErrorJustReturn: 0).drive(onNext: { float in
+            self.transform(float: float)
         }).disposed(by: bag)
     }
     
@@ -46,8 +46,8 @@ class GraphView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func transform(int: Int) {
-        cont.transform = CGAffineTransform(rotationAngle: CGFloat(Double(-int) * Double.pi/180))
+    func transform(float: Float) {
+        cont.transform = CGAffineTransform(rotationAngle: CGFloat(Double(-float) * Double.pi/180))
     }
     
     func update() {

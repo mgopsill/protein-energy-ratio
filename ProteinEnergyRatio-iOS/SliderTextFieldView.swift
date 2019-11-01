@@ -130,7 +130,7 @@ func sliderTextFieldViewModel(
             .map(Float.init)
             .compactMap(nothing)
         
-        let textInput = textAsFloat.withLatestFrom(inputOverride) { a, b in return (a, b) }.map(noLessThan).debug()
+        let textInput = textAsFloat.withLatestFrom(inputOverride) { a, b in return (a, b) }.map(noLessThan)
         let notLowerThanOverrideFloat = textFieldEndEditing.withLatestFrom(textInput)
         let notLowerThanOverrideString = notLowerThanOverrideFloat.map(floatToString)
         
