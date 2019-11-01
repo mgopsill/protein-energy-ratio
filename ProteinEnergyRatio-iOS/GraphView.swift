@@ -13,32 +13,17 @@ class GraphView: UIView {
     
     private let bag = DisposeBag()
     private var cont = UIView()
+    private let arrowLabel = UILabel()
     
-    let rotationAngle = BehaviorRelay<Float>(value: 0)
+    let rotationAngle = BehaviorRelay<(Float, Float)>(value: (0, 0))
     
     init() {
         super.init(frame: CGRect.zero)
-        backgroundColor = .green
-        
-        let leftBorder = UIView(frame: CGRect.zero)
-        addSubview(leftBorder)
-        leftBorder.backgroundColor = .purple
-        leftBorder.snp.makeConstraints { make in
-            make.leading.top.bottom.equalToSuperview()
-            make.width.equalTo(3)
-        }
-        
-        let rigthBorder = UIView(frame: CGRect.zero)
-        addSubview(rigthBorder)
-        rigthBorder.backgroundColor = .purple
-        rigthBorder.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(3)
-        }
-        
-        
-        rotationAngle.asDriver(onErrorJustReturn: 0).drive(onNext: { float in
-            self.transform(float: float)
+        backgroundColor = .clear
+        rotationAngle.asDriver(onErrorJustReturn: (0, 0)).drive(onNext: { angle, ratio in
+            self.transform(float: angle)
+            let ratioRounded = (ratio * 10).rounded(.toNearestOrEven) / 10
+            self.arrowLabel.text = "P:E = \(ratioRounded)"
         }).disposed(by: bag)
     }
     
@@ -65,6 +50,25 @@ class GraphView: UIView {
             make.trailing.centerY.equalToSuperview()
             make.height.equalTo(4)
             make.width.equalTo(frame.width)
+        }
+        
+        arrowLabel.text = "P:E"
+        arrowLabel.font = UIFont.boldSystemFont(ofSize: 8)
+        cont.addSubview(arrowLabel)
+        arrowLabel.snp.makeConstraints { make in
+            make.trailing.equalTo(arrow.snp.trailing).inset(6)
+            make.bottom.equalTo(arrow.snp.bottom).inset(6)
+        }
+        
+        UIGraphicsBeginImageContext(self.frame.size)
+        UIImage(named: "graphBackGround")?.draw(in: bounds)
+        
+        if let image = UIGraphicsGetImageFromCurrentImageContext(){
+            UIGraphicsEndImageContext()
+            backgroundColor = UIColor(patternImage: image)
+        }else{
+            UIGraphicsEndImageContext()
+            debugPrint("Image not available")
         }
     }
 }
