@@ -36,9 +36,11 @@ public class MainViewController: UIViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        setupViews()
         bindUI()
+        setupViews()
         view.backgroundColor = .white
+//        containerView.translatesAutoresizingMaskIntoConstraints = false
+//        containerView.intr
         title = "P:E"
     }
     
@@ -51,7 +53,8 @@ public class MainViewController: UIViewController {
         
         scrollView.addSubview(containerView)
         containerView.snp.makeConstraints { make in
-            make.leading.trailing.top.bottom.centerY.centerX.equalToSuperview()
+            make.leading.trailing.top.bottom.height.width.equalToSuperview()
+            make.bottom.equalToSuperview().priority(.low)
         }
         
         containerView.addSubview(proteinSlider)
@@ -128,7 +131,7 @@ public class MainViewController: UIViewController {
         graph.snp.makeConstraints { make in
             make.top.equalTo(nutritionalVectorLabel.snp.bottom)
             make.centerX.equalToSuperview()
-            make.height.width.equalTo(300)
+            make.height.width.equalTo(view.snp.width).multipliedBy(0.8)
         }
         view.layoutIfNeeded()
         graph.update()
@@ -147,6 +150,8 @@ public class MainViewController: UIViewController {
             make.centerY.equalTo(graph)
             make.centerX.equalTo((graph).snp.leading).inset((-proteinLabel.intrinsicContentSize.height / 2) - 4)
         }
+        
+        view.layoutIfNeeded()
     }
     
     func bindUI() {
@@ -169,6 +174,16 @@ public class MainViewController: UIViewController {
         nutritionalVectorValue.map { "Nutritional Vector: \(String($0)) "}.drive(nutritionalVectorLabel.rx.text).disposed(by: bag)
         Driver.combineLatest(nutritionalVectorValue, proteinRatioValue).drive(graph.rotationAngle).disposed(by: bag)
         carbNotLessThanFiberValue.drive(carbohydrateSlider.inputOverride).disposed(by: bag)
+    }
+    
+    public override func viewDidLayoutSubviews() {
+        self.scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: containerView.subviews.heightForAllSubViews)
+    }
+}
+
+extension Array where Element: UIView {
+    var heightForAllSubViews: CGFloat {
+        return self.map { $0.frame.height }.reduce(0, +)
     }
 }
 

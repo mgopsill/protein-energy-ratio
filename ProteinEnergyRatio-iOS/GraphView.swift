@@ -48,7 +48,7 @@ class GraphView: UIView {
         arrow.backgroundColor = .blue
         arrow.snp.makeConstraints { make in
             make.trailing.centerY.equalToSuperview()
-            make.height.equalTo(4)
+            make.height.equalTo(2)
             make.width.equalTo(frame.width)
         }
         
@@ -57,7 +57,7 @@ class GraphView: UIView {
         cont.addSubview(arrowLabel)
         arrowLabel.snp.makeConstraints { make in
             make.trailing.equalTo(arrow.snp.trailing).inset(6)
-            make.bottom.equalTo(arrow.snp.bottom).inset(6)
+            make.bottom.equalTo(arrow.snp.bottom).inset(3)
         }
         
         UIGraphicsBeginImageContext(self.frame.size)
