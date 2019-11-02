@@ -28,7 +28,6 @@ public class MainViewController: UIViewController {
         return  SlidersContainerView(views: [proteinSlider, fatSlider, carbohydrateSlider, fiberSlider])
     }()
     
-    
     private let caloriesLabel = UILabel()
     private let percentProteinLabel = UILabel()
     private let percentFatLabel = UILabel()
@@ -66,7 +65,8 @@ public class MainViewController: UIViewController {
         
         containerView.addSubview(slidersContainerView)
         slidersContainerView.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview().inset(inset)
+            make.top.equalToSuperview().inset(inset*2)
+            make.leading.trailing.equalToSuperview().inset(inset)
         }
 
         containerView.addSubview(labelContainerView)
@@ -79,26 +79,26 @@ public class MainViewController: UIViewController {
         labelContainerView.spacing = 15
         
         labelContainerView.addArrangedSubview(caloriesLabel)
-        caloriesLabel.backgroundColor = .red
+        caloriesLabel.backgroundColor = .cyan
 
         labelContainerView.addArrangedSubview(percentProteinLabel)
-        percentProteinLabel.backgroundColor = .purple
+        percentProteinLabel.backgroundColor = .cyan
 
         labelContainerView.addArrangedSubview(percentFatLabel)
-        percentFatLabel.backgroundColor = .green
+        percentFatLabel.backgroundColor = .cyan
 
         labelContainerView.addArrangedSubview(percentCarbLabel)
-        percentCarbLabel.backgroundColor = .orange
+        percentCarbLabel.backgroundColor = .cyan
 
         labelContainerView.addArrangedSubview(proteinEnergyRatioLabel)
         proteinEnergyRatioLabel.backgroundColor = .cyan
 
         labelContainerView.addArrangedSubview(nutritionalVectorLabel)
-        nutritionalVectorLabel.backgroundColor = .magenta
+        nutritionalVectorLabel.backgroundColor = .cyan
 
         containerView.addSubview(graph)
         graph.snp.makeConstraints { make in
-            make.top.equalTo(labelContainerView.snp.bottom)
+            make.top.equalTo(labelContainerView.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
             make.height.width.equalTo(view.snp.width).multipliedBy(0.8)
         }

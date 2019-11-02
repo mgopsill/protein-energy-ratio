@@ -28,8 +28,6 @@ class SliderTextFieldView: UIView {
 
     private func setupUI() {
         translatesAutoresizingMaskIntoConstraints = false
-        slider.backgroundColor = .lightGray
-        label.backgroundColor = .green
         textField.backgroundColor = .yellow
         slider.maximumValue = 50.0
         slider.minimumValue = 0.0
@@ -39,7 +37,7 @@ class SliderTextFieldView: UIView {
         textField.keyboardType = .decimalPad
         textField.textAlignment = .center
         textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.gray.cgColor
+        textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.cornerRadius = 4.0
         addSubview(label)
         addSubview(slider)
@@ -50,7 +48,7 @@ class SliderTextFieldView: UIView {
         }
         
         slider.snp.makeConstraints { make in
-            make.top.equalTo(label.snp.bottom)
+            make.top.equalTo(label.snp.bottom).offset(5)
             make.leading.bottom.equalToSuperview()
             make.width.equalToSuperview().inset(40)
         }

@@ -17,7 +17,7 @@ class SlidersContainerView: UIStackView {
         self.views = views
         super.init(frame: CGRect.zero)
         axis = .vertical
-        spacing = 15
+        spacing = 20
         setupViews()
     }
     
@@ -37,7 +37,7 @@ class SlidersContainerView: UIStackView {
 class SeperatorView: UIView {
     override init(frame: CGRect = CGRect.zero) {
         super.init(frame: frame)
-        backgroundColor = .gray
+        backgroundColor = .lightGray
         heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
     
