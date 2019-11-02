@@ -37,6 +37,10 @@ class SliderTextFieldView: UIView {
         slider.translatesAutoresizingMaskIntoConstraints = false
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.keyboardType = .decimalPad
+        textField.textAlignment = .center
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.gray.cgColor
+        textField.layer.cornerRadius = 4.0
         addSubview(label)
         addSubview(slider)
         addSubview(textField)
@@ -48,13 +52,14 @@ class SliderTextFieldView: UIView {
         slider.snp.makeConstraints { make in
             make.top.equalTo(label.snp.bottom)
             make.leading.bottom.equalToSuperview()
-            make.width.equalToSuperview().inset(50)
+            make.width.equalToSuperview().inset(40)
         }
         
         textField.snp.makeConstraints { make in
             make.centerY.equalTo(slider.snp.centerY)
             make.trailing.equalToSuperview()
-            make.leading.equalTo(slider.snp.trailing)
+            make.leading.equalTo(slider.snp.trailing).offset(10)
+            make.height.equalTo(slider)
         }
         
         textField.addDoneToolbar().rx.tap.bind { self.endEditing(true) }.disposed(by: bag)

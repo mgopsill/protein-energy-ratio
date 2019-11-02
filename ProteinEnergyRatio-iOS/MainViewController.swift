@@ -14,6 +14,8 @@ import UIKit
 
 public class MainViewController: UIViewController {
     
+    private let inset = 10.0
+    
     private let scrollView = UIScrollView()
     private let containerView = UIView()
     
@@ -22,12 +24,19 @@ public class MainViewController: UIViewController {
     private let carbohydrateSlider = SliderTextFieldView(title: "Carbohydrate (grams):")
     private let fiberSlider = SliderTextFieldView(title: "Fiber (grams):")
     
+    private lazy var slidersContainerView: SlidersContainerView = {
+        return  SlidersContainerView(views: [proteinSlider, fatSlider, carbohydrateSlider, fiberSlider])
+    }()
+    
+    
     private let caloriesLabel = UILabel()
     private let percentProteinLabel = UILabel()
     private let percentFatLabel = UILabel()
     private let percentCarbLabel = UILabel()
     private let proteinEnergyRatioLabel = UILabel()
     private let nutritionalVectorLabel = UILabel()
+    private let labelContainerView = UIStackView()
+    
     private let graph = GraphView()
     private let proteinLabel = UILabel()
     private let energyLabel = UILabel()
@@ -39,8 +48,6 @@ public class MainViewController: UIViewController {
         bindUI()
         setupViews()
         view.backgroundColor = .white
-//        containerView.translatesAutoresizingMaskIntoConstraints = false
-//        containerView.intr
         title = "P:E"
     }
     
@@ -57,79 +64,41 @@ public class MainViewController: UIViewController {
             make.bottom.equalToSuperview().priority(.low)
         }
         
-        containerView.addSubview(proteinSlider)
-        proteinSlider.snp.makeConstraints { make in
-            make.top.equalTo(containerView.safeAreaLayoutGuide)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(80)
+        containerView.addSubview(slidersContainerView)
+        slidersContainerView.snp.makeConstraints { make in
+            make.leading.trailing.top.equalToSuperview().inset(inset)
+        }
+
+        containerView.addSubview(labelContainerView)
+        labelContainerView.snp.makeConstraints { make in
+            make.top.equalTo(slidersContainerView.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview().inset(inset*2)
         }
         
-        containerView.addSubview(fatSlider)
-        fatSlider.snp.makeConstraints { make in
-            make.top.equalTo(proteinSlider.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(80)
-        }
+        labelContainerView.axis = .vertical
+        labelContainerView.spacing = 15
         
-        containerView.addSubview(carbohydrateSlider)
-        carbohydrateSlider.snp.makeConstraints { make in
-            make.top.equalTo(fatSlider.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(80)
-        }
-        
-        containerView.addSubview(fiberSlider)
-        fiberSlider.snp.makeConstraints { make in
-            make.top.equalTo(carbohydrateSlider.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(80)
-        }
-        
-        containerView.addSubview(caloriesLabel)
+        labelContainerView.addArrangedSubview(caloriesLabel)
         caloriesLabel.backgroundColor = .red
-        caloriesLabel.snp.makeConstraints { make in
-            make.top.equalTo(fiberSlider.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-        }
-        
-        containerView.addSubview(percentProteinLabel)
+
+        labelContainerView.addArrangedSubview(percentProteinLabel)
         percentProteinLabel.backgroundColor = .purple
-        percentProteinLabel.snp.makeConstraints { make in
-            make.top.equalTo(caloriesLabel.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-        }
-        
-        containerView.addSubview(percentFatLabel)
+
+        labelContainerView.addArrangedSubview(percentFatLabel)
         percentFatLabel.backgroundColor = .green
-        percentFatLabel.snp.makeConstraints { make in
-            make.top.equalTo(percentProteinLabel.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-        }
-        
-        containerView.addSubview(percentCarbLabel)
+
+        labelContainerView.addArrangedSubview(percentCarbLabel)
         percentCarbLabel.backgroundColor = .orange
-        percentCarbLabel.snp.makeConstraints { make in
-            make.top.equalTo(percentFatLabel.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-        }
-        
-        containerView.addSubview(proteinEnergyRatioLabel)
+
+        labelContainerView.addArrangedSubview(proteinEnergyRatioLabel)
         proteinEnergyRatioLabel.backgroundColor = .cyan
-        proteinEnergyRatioLabel.snp.makeConstraints { make in
-            make.top.equalTo(percentCarbLabel.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-        }
-        
-        containerView.addSubview(nutritionalVectorLabel)
+
+        labelContainerView.addArrangedSubview(nutritionalVectorLabel)
         nutritionalVectorLabel.backgroundColor = .magenta
-        nutritionalVectorLabel.snp.makeConstraints { make in
-            make.top.equalTo(proteinEnergyRatioLabel.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-        }
-        
+
         containerView.addSubview(graph)
         graph.snp.makeConstraints { make in
-            make.top.equalTo(nutritionalVectorLabel.snp.bottom)
+            make.top.equalTo(labelContainerView.snp.bottom)
             make.centerX.equalToSuperview()
             make.height.width.equalTo(view.snp.width).multipliedBy(0.8)
         }
