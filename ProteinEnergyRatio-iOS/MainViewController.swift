@@ -71,34 +71,67 @@ public class MainViewController: UIViewController {
 
         containerView.addSubview(labelContainerView)
         labelContainerView.snp.makeConstraints { make in
-            make.top.equalTo(slidersContainerView.snp.bottom).offset(20)
+            make.top.equalTo(slidersContainerView.snp.bottom).offset(60)
             make.leading.trailing.equalToSuperview().inset(inset*2)
+        }
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .cyan
+        backgroundView.layer.cornerRadius = 5
+        labelContainerView.addSubview(backgroundView)
+        backgroundView.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(-20)
+            make.leading.trailing.equalToSuperview()
         }
         
         labelContainerView.axis = .vertical
         labelContainerView.spacing = 15
         
-        labelContainerView.addArrangedSubview(caloriesLabel)
-        caloriesLabel.backgroundColor = .cyan
+        let caloriesLeft = UILabel()
+        caloriesLeft.text = "Calories:"
+        caloriesLeft.font = UIFont.boldSystemFont(ofSize: 16)
+        let calories = TwoLabels(leftLabel: caloriesLeft, rightLabel: caloriesLabel)
+        
+        labelContainerView.addArrangedSubview(calories)
+        
+        let proteinLeft = UILabel()
+        proteinLeft.text = "Protein percent:"
+        proteinLeft.font = UIFont.boldSystemFont(ofSize: 16)
+        let protein = TwoLabels(leftLabel: proteinLeft, rightLabel: percentProteinLabel)
+        
+        labelContainerView.addArrangedSubview(protein)
 
-        labelContainerView.addArrangedSubview(percentProteinLabel)
-        percentProteinLabel.backgroundColor = .cyan
+        let fatLeft = UILabel()
+        fatLeft.text = "Fat percent:"
+        fatLeft.font = UIFont.boldSystemFont(ofSize: 16)
+        let fat = TwoLabels(leftLabel: fatLeft, rightLabel: percentFatLabel)
+        
+        labelContainerView.addArrangedSubview(fat)
 
-        labelContainerView.addArrangedSubview(percentFatLabel)
-        percentFatLabel.backgroundColor = .cyan
+        let carbLeft = UILabel()
+        carbLeft.text = "Carb percent:"
+        carbLeft.font = UIFont.boldSystemFont(ofSize: 16)
+        let carb = TwoLabels(leftLabel: carbLeft, rightLabel: percentCarbLabel)
+        
+        labelContainerView.addArrangedSubview(carb)
+        
+        let peLeft = UILabel()
+        peLeft.text = "Protein:Energy:"
+        peLeft.font = UIFont.boldSystemFont(ofSize: 16)
+        let pe = TwoLabels(leftLabel: peLeft, rightLabel: proteinEnergyRatioLabel)
+        
+        labelContainerView.addArrangedSubview(pe)
 
-        labelContainerView.addArrangedSubview(percentCarbLabel)
-        percentCarbLabel.backgroundColor = .cyan
-
-        labelContainerView.addArrangedSubview(proteinEnergyRatioLabel)
-        proteinEnergyRatioLabel.backgroundColor = .cyan
-
-        labelContainerView.addArrangedSubview(nutritionalVectorLabel)
-        nutritionalVectorLabel.backgroundColor = .cyan
+        let nutLeft = UILabel()
+        nutLeft.text = "Nutrional Vector Angle:"
+        nutLeft.font = UIFont.boldSystemFont(ofSize: 16)
+        let nut = TwoLabels(leftLabel: nutLeft, rightLabel: nutritionalVectorLabel)
+        
+        labelContainerView.addArrangedSubview(nut)
 
         containerView.addSubview(graph)
         graph.snp.makeConstraints { make in
-            make.top.equalTo(labelContainerView.snp.bottom).offset(20)
+            make.top.equalTo(labelContainerView.snp.bottom).offset(60)
             make.centerX.equalToSuperview()
             make.height.width.equalTo(view.snp.width).multipliedBy(0.8)
         }
@@ -135,12 +168,12 @@ public class MainViewController: UIViewController {
                           fatSliderInput: fatSlider.value.asObservable(),
                           carbohydrateSliderInput: carbohydrateSlider.value.asObservable(),
                           fiberSliderInput: fiberSlider.value.asObservable())
-        caloriesLabelValue.map { "Cals: \(String($0)) "}.drive(caloriesLabel.rx.text).disposed(by: bag)
-        percentProteinLabelValue.map { "Protein percent: \(String($0)) "}.drive(percentProteinLabel.rx.text).disposed(by: bag)
-        percentFatLabelValue.map { "Fat percent: \(String($0)) "}.drive(percentFatLabel.rx.text).disposed(by: bag)
-        percentCarbLabelValue.map { "Carb percent: \(String($0)) "}.drive(percentCarbLabel.rx.text).disposed(by: bag)
-        proteinRatioValue.map { "P:E: \(String($0)) "}.drive(proteinEnergyRatioLabel.rx.text).disposed(by: bag)
-        nutritionalVectorValue.map { "Nutritional Vector: \(String($0)) "}.drive(nutritionalVectorLabel.rx.text).disposed(by: bag)
+        caloriesLabelValue.map { "\(String($0))"}.drive(caloriesLabel.rx.text).disposed(by: bag)
+        percentProteinLabelValue.map { "\(String($0))%"}.drive(percentProteinLabel.rx.text).disposed(by: bag)
+        percentFatLabelValue.map { "\(String($0))%"}.drive(percentFatLabel.rx.text).disposed(by: bag)
+        percentCarbLabelValue.map { "\(String($0))%"}.drive(percentCarbLabel.rx.text).disposed(by: bag)
+        proteinRatioValue.map { "\(String($0))"}.drive(proteinEnergyRatioLabel.rx.text).disposed(by: bag)
+        nutritionalVectorValue.map { "\(String($0))"}.drive(nutritionalVectorLabel.rx.text).disposed(by: bag)
         Driver.combineLatest(nutritionalVectorValue, proteinRatioValue).drive(graph.rotationAngle).disposed(by: bag)
         carbNotLessThanFiberValue.drive(carbohydrateSlider.inputOverride).disposed(by: bag)
     }

@@ -25,6 +25,7 @@
 		4D80710C2328D7B90073C578 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D80710A2328D7B90073C578 /* LaunchScreen.storyboard */; };
 		4D92988023698AE900CD9FF0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D92987F23698AE800CD9FF0 /* Extensions.swift */; };
 		4DA2FC8C236C8FB9001E54EB /* SlidersContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA2FC8B236C8FB9001E54EB /* SlidersContainerView.swift */; };
+		4DA2FC90236E1092001E54EB /* TwoLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA2FC8F236E1092001E54EB /* TwoLabels.swift */; };
 		4DE70BFA236AD282002EC500 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4DE70BF9236AD282002EC500 /* TODO.txt */; };
 		4DE766F02368892D0077D083 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE766EF2368892D0077D083 /* GraphView.swift */; };
 		57D820C41099AF413B30ED9F /* Pods_ProteinEnergyRatio_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7583E8E396E41C0C51446927 /* Pods_ProteinEnergyRatio_iOS.framework */; };
@@ -90,6 +91,7 @@
 		4D80711E2328D8A20073C578 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4D92987F23698AE800CD9FF0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4DA2FC8B236C8FB9001E54EB /* SlidersContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidersContainerView.swift; sourceTree = "<group>"; };
+		4DA2FC8F236E1092001E54EB /* TwoLabels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoLabels.swift; sourceTree = "<group>"; };
 		4DE70BF9236AD282002EC500 /* TODO.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = TODO.txt; path = ../../TODO.txt; sourceTree = "<group>"; };
 		4DE766EF2368892D0077D083 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		7583E8E396E41C0C51446927 /* Pods_ProteinEnergyRatio_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProteinEnergyRatio_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +138,7 @@
 				4DA2FC8B236C8FB9001E54EB /* SlidersContainerView.swift */,
 				4D6B1D6123672330006C30B9 /* SliderTextFieldView.swift */,
 				4DE766EF2368892D0077D083 /* GraphView.swift */,
+				4DA2FC8F236E1092001E54EB /* TwoLabels.swift */,
 				4D80711D2328D8970073C578 /* Networking */,
 				4D80711A2328D8610073C578 /* Service */,
 				4D8071192328D8190073C578 /* Search */,
@@ -453,6 +456,7 @@
 				4D92988023698AE900CD9FF0 /* Extensions.swift in Sources */,
 				4D6B1D6223672330006C30B9 /* SliderTextFieldView.swift in Sources */,
 				4D6B1D5C23671A7D006C30B9 /* StationSearchViewController.swift in Sources */,
+				4DA2FC90236E1092001E54EB /* TwoLabels.swift in Sources */,
 				4DE766F02368892D0077D083 /* GraphView.swift in Sources */,
 				4D6B1D56236719C2006C30B9 /* MainViewController.swift in Sources */,
 			);
