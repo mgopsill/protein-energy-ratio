@@ -9,15 +9,17 @@ import RxRelay
 import RxSwift
 import UIKit
 
-class GraphView: UIView {
+public class GraphView: UIView {
     
     private let bag = DisposeBag()
     private var cont = UIView()
     private let arrowLabel = UILabel()
+    private let proteinLabel = UILabel()
+    private let energyLabel = UILabel()
     
     let rotationAngle = BehaviorRelay<(Float, Float)>(value: (0, 0))
     
-    init() {
+    public init() {
         super.init(frame: CGRect.zero)
         backgroundColor = .clear
         rotationAngle.asDriver(onErrorJustReturn: (0, 0)).drive(onNext: { angle, ratio in
@@ -31,17 +33,25 @@ class GraphView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func transform(float: Float) {
+    public func transform(float: Float) {
         cont.transform = CGAffineTransform(rotationAngle: CGFloat(Double(-float) * Double.pi/180))
     }
     
-    func update() {
+    public func update() {
+        let image = UIImage(named: "graphBackGround")
+        let imageView = UIImageView(image: image)
+        addSubview(imageView)
+        imageView.snp.makeConstraints { make in
+            make.top.bottom.leading.trailing.equalToSuperview()
+        }
+        
         addSubview(cont)
         
         cont.snp.makeConstraints { make in
             make.trailing.top.equalToSuperview()
             make.width.height.equalToSuperview().multipliedBy(2)
         }
+        cont.backgroundColor = .clear
         
         let arrow = UIView(frame: CGRect.zero)
         cont.addSubview(arrow)
@@ -49,7 +59,7 @@ class GraphView: UIView {
         arrow.snp.makeConstraints { make in
             make.trailing.centerY.equalToSuperview()
             make.height.equalTo(2)
-            make.width.equalTo(frame.width)
+            make.width.equalTo(self.snp.width)
         }
         
         arrowLabel.text = "P:E"
@@ -60,15 +70,19 @@ class GraphView: UIView {
             make.bottom.equalTo(arrow.snp.bottom).inset(3)
         }
         
-        UIGraphicsBeginImageContext(self.frame.size)
-        UIImage(named: "graphBackGround")?.draw(in: bounds)
+        addSubview(energyLabel)
+        energyLabel.text = "ENERGY"
+        energyLabel.snp.makeConstraints { make in
+            make.top.equalTo(self.snp.bottom).offset(4)
+            make.centerX.equalTo(self)
+        }
         
-        if let image = UIGraphicsGetImageFromCurrentImageContext(){
-            UIGraphicsEndImageContext()
-            backgroundColor = UIColor(patternImage: image)
-        }else{
-            UIGraphicsEndImageContext()
-            debugPrint("Image not available")
+        addSubview(proteinLabel)
+        proteinLabel.text = "PROTEIN"
+        proteinLabel.transform = CGAffineTransform(rotationAngle: CGFloat(Double(-90) * Double.pi/180))
+        proteinLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(self)
+            make.centerX.equalTo((self).snp.leading).inset((-proteinLabel.intrinsicContentSize.height / 2) - 4)
         }
     }
 }

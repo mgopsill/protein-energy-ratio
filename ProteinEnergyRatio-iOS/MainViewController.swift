@@ -17,7 +17,7 @@ public class MainViewController: UIViewController {
     private let inset = 10.0
     
     private let scrollView = UIScrollView()
-    private let containerView = UIView()
+    private let containerView = UIStackView()
     
     private let proteinSlider = SliderTextFieldView(title: "Protein (grams):")
     private let fatSlider = SliderTextFieldView(title: "Fat (grams):")
@@ -57,32 +57,17 @@ public class MainViewController: UIViewController {
             make.leading.trailing.top.bottom.equalToSuperview()
         }
         
+        containerView.axis = .vertical
+        containerView.spacing = 30
         scrollView.addSubview(containerView)
         containerView.snp.makeConstraints { make in
-            make.leading.trailing.top.bottom.height.width.equalToSuperview()
+            make.leading.trailing.top.bottom.width.equalToSuperview().inset(20)
             make.bottom.equalToSuperview().priority(.low)
         }
         
-        containerView.addSubview(slidersContainerView)
-        slidersContainerView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(inset*2)
-            make.leading.trailing.equalToSuperview().inset(inset)
-        }
+        containerView.addArrangedSubview(slidersContainerView)
 
-        containerView.addSubview(labelContainerView)
-        labelContainerView.snp.makeConstraints { make in
-            make.top.equalTo(slidersContainerView.snp.bottom).offset(60)
-            make.leading.trailing.equalToSuperview().inset(inset*2)
-        }
-        
-        let backgroundView = UIView()
-        backgroundView.backgroundColor = .cyan
-        backgroundView.layer.cornerRadius = 5
-        labelContainerView.addSubview(backgroundView)
-        backgroundView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview().inset(-20)
-            make.leading.trailing.equalToSuperview()
-        }
+        containerView.addArrangedSubview(labelContainerView)
         
         labelContainerView.axis = .vertical
         labelContainerView.spacing = 15
@@ -129,31 +114,14 @@ public class MainViewController: UIViewController {
         
         labelContainerView.addArrangedSubview(nut)
 
-        containerView.addSubview(graph)
+        let graphContainerView = ContainerView(height: view.frame.width * 1.2)
+        graphContainerView.addSubview(graph)
+        containerView.addArrangedSubview(graphContainerView)
         graph.snp.makeConstraints { make in
-            make.top.equalTo(labelContainerView.snp.bottom).offset(60)
-            make.centerX.equalToSuperview()
+            make.centerX.centerY.equalToSuperview()
             make.height.width.equalTo(view.snp.width).multipliedBy(0.8)
         }
-        view.layoutIfNeeded()
         graph.update()
-        
-        containerView.addSubview(energyLabel)
-        energyLabel.text = "ENERGY"
-        energyLabel.snp.makeConstraints { make in
-            make.top.equalTo(graph.snp.bottom).offset(4)
-            make.centerX.equalTo(graph)
-        }
-        
-        containerView.addSubview(proteinLabel)
-        proteinLabel.text = "PROTEIN"
-        proteinLabel.transform = CGAffineTransform(rotationAngle: CGFloat(Double(-90) * Double.pi/180))
-        proteinLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(graph)
-            make.centerX.equalTo((graph).snp.leading).inset((-proteinLabel.intrinsicContentSize.height / 2) - 4)
-        }
-        
-        view.layoutIfNeeded()
     }
     
     func bindUI() {
@@ -176,16 +144,6 @@ public class MainViewController: UIViewController {
         nutritionalVectorValue.map { "\(String($0))"}.drive(nutritionalVectorLabel.rx.text).disposed(by: bag)
         Driver.combineLatest(nutritionalVectorValue, proteinRatioValue).drive(graph.rotationAngle).disposed(by: bag)
         carbNotLessThanFiberValue.drive(carbohydrateSlider.inputOverride).disposed(by: bag)
-    }
-    
-    public override func viewDidLayoutSubviews() {
-        self.scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: containerView.subviews.heightForAllSubViews)
-    }
-}
-
-extension Array where Element: UIView {
-    var heightForAllSubViews: CGFloat {
-        return self.map { $0.frame.height }.reduce(0, +)
     }
 }
 
@@ -259,4 +217,21 @@ func mainViewModel(
             nutritonalVectorDriver,
             carbNotLessThanFiberDriver
         )
+}
+
+class ContainerView: UIView {
+    private let height: CGFloat
+    init(height: CGFloat = 0.0) {
+        self.height = height
+        super.init(frame: CGRect.zero)
+        backgroundColor = .clear
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: 0, height: height)
+    }
 }
