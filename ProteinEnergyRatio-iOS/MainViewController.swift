@@ -66,61 +66,46 @@ public class MainViewController: UIViewController {
         }
         
         containerView.addArrangedSubview(slidersContainerView)
-
         containerView.addArrangedSubview(labelContainerView)
         
         labelContainerView.axis = .vertical
         labelContainerView.spacing = 15
         
-        let caloriesLeft = UILabel()
-        caloriesLeft.text = "Calories:"
-        caloriesLeft.font = UIFont.boldSystemFont(ofSize: 16)
-        let calories = TwoLabels(leftLabel: caloriesLeft, rightLabel: caloriesLabel)
-        
+        let calories = LabelsView(leftText: "Calories:", rightText: "🍽", centralLabel: caloriesLabel)
         labelContainerView.addArrangedSubview(calories)
         
-        let proteinLeft = UILabel()
-        proteinLeft.text = "Protein percent:"
-        proteinLeft.font = UIFont.boldSystemFont(ofSize: 16)
-        let protein = TwoLabels(leftLabel: proteinLeft, rightLabel: percentProteinLabel)
-        
+        let protein = LabelsView(leftText: "Protein percent:", rightText: "💪", centralLabel: percentProteinLabel)
         labelContainerView.addArrangedSubview(protein)
 
-        let fatLeft = UILabel()
-        fatLeft.text = "Fat percent:"
-        fatLeft.font = UIFont.boldSystemFont(ofSize: 16)
-        let fat = TwoLabels(leftLabel: fatLeft, rightLabel: percentFatLabel)
-        
+        let fat = LabelsView(leftText: "Fat percent:", rightText: "🧀", centralLabel: percentFatLabel)
         labelContainerView.addArrangedSubview(fat)
 
-        let carbLeft = UILabel()
-        carbLeft.text = "Carb percent:"
-        carbLeft.font = UIFont.boldSystemFont(ofSize: 16)
-        let carb = TwoLabels(leftLabel: carbLeft, rightLabel: percentCarbLabel)
-        
+        let carb = LabelsView(leftText: "Carb percent:", rightText: "🍚", centralLabel: percentCarbLabel)
         labelContainerView.addArrangedSubview(carb)
         
-        let peLeft = UILabel()
-        peLeft.text = "Protein:Energy:"
-        peLeft.font = UIFont.boldSystemFont(ofSize: 16)
-        let pe = TwoLabels(leftLabel: peLeft, rightLabel: proteinEnergyRatioLabel)
-        
+        let pe = LabelsView(leftText: "Protein:Energy:", rightText: "📈", centralLabel: proteinEnergyRatioLabel)
         labelContainerView.addArrangedSubview(pe)
 
-        let nutLeft = UILabel()
-        nutLeft.text = "Nutrional Vector Angle:"
-        nutLeft.font = UIFont.boldSystemFont(ofSize: 16)
-        let nut = TwoLabels(leftLabel: nutLeft, rightLabel: nutritionalVectorLabel)
-        
+        let nut = LabelsView(leftText: "Nutrional Vector °:", rightText: "🧭", centralLabel: nutritionalVectorLabel)
         labelContainerView.addArrangedSubview(nut)
 
-        let graphContainerView = GraphContainerView(height: view.frame.width)
+        containerView.addArrangedSubview(SeperatorView())
+        
+        let graphContainerView = GraphContainerView(height: view.frame.width * 0.8)
         graphContainerView.addSubview(graph)
         containerView.addArrangedSubview(graphContainerView)
         graph.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
-            make.height.width.equalTo(view.snp.width).multipliedBy(0.8)
+            make.top.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.height.width.equalTo(view.snp.width).multipliedBy(0.7)
         }
+        
+        let footerLabel = UILabel()
+        footerLabel.text = "P:E Ratio"
+        footerLabel.font = UIFont.systemFont(ofSize: 6, weight: .thin)
+        footerLabel.textColor = .gray
+        footerLabel.textAlignment = .center
+        containerView.addArrangedSubview(footerLabel)
     }
     
     func bindUI() {
