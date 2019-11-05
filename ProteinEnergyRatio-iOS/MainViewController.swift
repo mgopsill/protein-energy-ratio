@@ -114,14 +114,13 @@ public class MainViewController: UIViewController {
         
         labelContainerView.addArrangedSubview(nut)
 
-        let graphContainerView = ContainerView(height: view.frame.width * 1.2)
+        let graphContainerView = GraphContainerView(height: view.frame.width)
         graphContainerView.addSubview(graph)
         containerView.addArrangedSubview(graphContainerView)
         graph.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
             make.height.width.equalTo(view.snp.width).multipliedBy(0.8)
         }
-        graph.update()
     }
     
     func bindUI() {
@@ -217,21 +216,4 @@ func mainViewModel(
             nutritonalVectorDriver,
             carbNotLessThanFiberDriver
         )
-}
-
-class ContainerView: UIView {
-    private let height: CGFloat
-    init(height: CGFloat = 0.0) {
-        self.height = height
-        super.init(frame: CGRect.zero)
-        backgroundColor = .clear
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: 0, height: height)
-    }
 }

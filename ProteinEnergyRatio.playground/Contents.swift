@@ -72,7 +72,6 @@ class ViewController: UIViewController {
         
 
         stackView.addArrangedSubview(containerView)
-        graphView.update()
 
     }
 }
@@ -97,6 +96,3 @@ class CustomView: UIView {
 let viewController = ViewController()
 //viewController.preferredContentSize = CGSize(width: 768, height: 1024)
 PlaygroundPage.current.liveView = viewController
-
-
-

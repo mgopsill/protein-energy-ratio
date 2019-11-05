@@ -27,6 +27,7 @@ public class GraphView: UIView {
             let ratioRounded = (ratio * 10).rounded(.toNearestOrEven) / 10
             self.arrowLabel.text = "P:E = \(ratioRounded)"
         }).disposed(by: bag)
+        setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,7 +38,7 @@ public class GraphView: UIView {
         cont.transform = CGAffineTransform(rotationAngle: CGFloat(Double(-float) * Double.pi/180))
     }
     
-    public func update() {
+    public func setupViews() {
         let image = UIImage(named: "graphBackGround")
         let imageView = UIImageView(image: image)
         addSubview(imageView)
@@ -84,5 +85,24 @@ public class GraphView: UIView {
             make.centerY.equalTo(self)
             make.centerX.equalTo((self).snp.leading).inset((-proteinLabel.intrinsicContentSize.height / 2) - 4)
         }
+    }
+}
+
+
+
+class GraphContainerView: UIView {
+    private let height: CGFloat
+    init(height: CGFloat = 0.0) {
+        self.height = height
+        super.init(frame: CGRect.zero)
+        backgroundColor = .clear
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: 0, height: height)
     }
 }
