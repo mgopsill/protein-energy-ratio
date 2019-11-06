@@ -56,10 +56,13 @@ public class MainViewController: UIViewController {
         navigationController?.navigationBar.layer.shadowRadius = 4.0
         navigationController?.navigationBar.layer.shadowOpacity = 0.5
         navigationController?.navigationBar.layer.masksToBounds = false
+        navigationController?.navigationBar.backgroundColor = UIColor(red: 100/256, green: 224/256, blue: 255/256, alpha: 1)
+        navigationController?.navigationBar.barTintColor = UIColor(red: 100/256, green: 224/256, blue: 255/256, alpha: 1)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        UIApplication.shared.statusBarUIView?.backgroundColor = UIColor(red: 100/256, green: 224/256, blue: 255/256, alpha: 1)
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEditing)))
-        navigationController?.navigationBar.backgroundColor = .blue
-        navigationController?.navigationBar.prefersLargeTitles = true
         
         view.addSubview(scrollView)
         scrollView.delaysContentTouches = false
