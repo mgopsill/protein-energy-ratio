@@ -62,6 +62,7 @@ public class MainViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         view.addSubview(scrollView)
+        scrollView.delaysContentTouches = false
         scrollView.keyboardDismissMode = .onDrag
         scrollView.snp.makeConstraints { make in
             make.leading.trailing.top.bottom.equalToSuperview()
