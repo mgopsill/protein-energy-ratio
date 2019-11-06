@@ -74,13 +74,49 @@ class SliderTextFieldView: UIView {
         let sliderInput = slider.rx.value.asObservable().withLatestFrom(inputOverride) { a, b in return (b, a) }.map(noLessThan)
         let overrideInput = inputOverride.asObservable().withLatestFrom(value) { a, b in return (a, b) }.map(noLessThan)
         
-        let (sliderValue, floatValue) = sliderTextFieldViewModel(sliderInput: Observable.merge(sliderInput, overrideInput),
-                                                                 textFieldInput: textField.rx.value.asObservable(),
-                                                                 inputOverride: inputOverride.asObservable(),
-                                                                 textFieldEndEditing: textField.rx.controlEvent(.editingDidEnd).asObservable())
+        let (sliderValue, floatValue, textFieldDidBeginEditing, textFieldDidEndEditing) =
+            sliderTextFieldViewModel(sliderInput: Observable.merge(sliderInput, overrideInput),
+                                     textFieldInput: textField.rx.value.asObservable(),
+                                     inputOverride: inputOverride.asObservable(),
+                                     textFieldBeginEditing: textField.rx.controlEvent(.editingDidBegin).asObservable(),
+                                     textFieldEndEditing: textField.rx.controlEvent(.editingDidEnd).asObservable())
         sliderValue.drive(textField.rx.text).disposed(by: bag)
         floatValue.drive(slider.rx.value).disposed(by: bag)
         floatValue.drive(value).disposed(by: bag)
+        textFieldDidBeginEditing.drive(onNext: startEditingAnimation).disposed(by: bag)
+        textFieldDidEndEditing.drive(onNext: stopEditingAnimation).disposed(by: bag)
+    }
+    
+    private func startEditingAnimation() {
+        let color = CABasicAnimation(keyPath: "borderColor")
+        color.fromValue = UIColor.lightGray.cgColor
+        color.toValue = UIColor.black.cgColor
+        color.duration = 0.5
+        textField.layer.borderColor = UIColor.black.cgColor
+        textField.layer.add(color, forKey: "borderColor")
+        
+        let backgroundColor = CABasicAnimation(keyPath: "backgroundColor")
+        backgroundColor.fromValue = UIColor.yellow.cgColor
+        backgroundColor.toValue = UIColor.white.cgColor
+        backgroundColor.duration = 0.5
+        textField.layer.backgroundColor = UIColor.white.cgColor
+        textField.layer.add(backgroundColor, forKey: "backgroundColor")
+    }
+    
+    private func stopEditingAnimation() {
+        let color = CABasicAnimation(keyPath: "borderColor")
+        color.fromValue = UIColor.black.cgColor
+        color.toValue = UIColor.lightGray.cgColor
+        color.duration = 0.5
+        textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.layer.add(color, forKey: "borderColor")
+        
+        let backgroundColor = CABasicAnimation(keyPath: "backgroundColor")
+        backgroundColor.fromValue = UIColor.white.cgColor
+        backgroundColor.toValue = UIColor.yellow.cgColor
+        backgroundColor.duration = 0.5
+        textField.layer.backgroundColor = UIColor.yellow.cgColor
+        textField.layer.add(backgroundColor, forKey: "backgroundColor")
     }
     
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -90,10 +126,13 @@ func sliderTextFieldViewModel(
     sliderInput: Observable<Float>,
     textFieldInput: Observable<String?>,
     inputOverride: Observable<Float>,
-    textFieldEndEditing: Observable<()>
+    textFieldBeginEditing: Observable<Void>,
+    textFieldEndEditing: Observable<Void>
     ) -> (
     Driver<String>,
-    Driver<Float>
+    Driver<Float>,
+    Driver<Void>,
+    Driver<Void>
     ) {
         
         func noLessThan(_ a: Float, _ b: Float) -> Float {
@@ -149,6 +188,8 @@ func sliderTextFieldViewModel(
     
         return (
             mergedStringOutputs.asDriver(onErrorJustReturn: ""),
-            mergedFloatOutputs.asDriver(onErrorJustReturn: 0.0)
+            mergedFloatOutputs.asDriver(onErrorJustReturn: 0.0),
+            textFieldBeginEditing.asDriver(onErrorJustReturn: ()),
+            textFieldEndEditing.asDriver(onErrorJustReturn: ())
         )
 }

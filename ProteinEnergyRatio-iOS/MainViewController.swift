@@ -48,10 +48,10 @@ public class MainViewController: UIViewController {
         setupViews()
         view.backgroundColor = .white
         title = "Protein : Energy"
-        
     }
     
     private func setupViews() {
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEditing)))
         navigationController?.navigationBar.backgroundColor = .blue
         navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -122,6 +122,10 @@ public class MainViewController: UIViewController {
         footerLabel.textColor = .gray
         footerLabel.textAlignment = .center
         containerView.addArrangedSubview(footerLabel)
+    }
+    
+    @objc func endEditing() {
+        self.view.endEditing(true)
     }
     
     func bindUI() {
