@@ -51,6 +51,12 @@ public class MainViewController: UIViewController {
     }
     
     private func setupViews() {
+        navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
+        navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        navigationController?.navigationBar.layer.shadowRadius = 4.0
+        navigationController?.navigationBar.layer.shadowOpacity = 0.5
+        navigationController?.navigationBar.layer.masksToBounds = false
+        
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEditing)))
         navigationController?.navigationBar.backgroundColor = .blue
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -117,7 +123,7 @@ public class MainViewController: UIViewController {
         labelContainerView.sendSubviewToBack(labelContainerBackgroundView)
         
         let footerLabel = UILabel()
-        footerLabel.text = "P:E Ratio"
+        footerLabel.text = "Protein : Energy Ratio"
         footerLabel.font = UIFont.systemFont(ofSize: 8, weight: .thin)
         footerLabel.textColor = .gray
         footerLabel.textAlignment = .center
