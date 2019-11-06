@@ -47,10 +47,14 @@ public class MainViewController: UIViewController {
         bindUI()
         setupViews()
         view.backgroundColor = .white
-        title = "P:E"
+        title = "Protein : Energy"
+        
     }
     
     private func setupViews() {
+        navigationController?.navigationBar.backgroundColor = .blue
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         view.addSubview(scrollView)
         scrollView.keyboardDismissMode = .onDrag
         scrollView.snp.makeConstraints { make in
@@ -89,7 +93,8 @@ public class MainViewController: UIViewController {
         let nut = LabelsView(leftText: "Nutrional Vector °:", rightText: "🧭", centralLabel: nutritionalVectorLabel)
         labelContainerView.addArrangedSubview(nut)
 
-        containerView.addArrangedSubview(SeperatorView())
+        let x = SeperatorView()
+        containerView.addArrangedSubview(x)
         
         let graphContainerView = GraphContainerView(height: view.frame.width * 0.8)
         graphContainerView.addSubview(graph)
@@ -100,9 +105,20 @@ public class MainViewController: UIViewController {
             make.height.width.equalTo(view.snp.width).multipliedBy(0.7)
         }
         
+        let labelContainerBackgroundView = UIView()
+        labelContainerBackgroundView.backgroundColor = UIColor(red: 100/256, green: 224/256, blue: 255/256, alpha: 1)
+        labelContainerBackgroundView.layer.cornerRadius = 10
+        labelContainerView.addSubview(labelContainerBackgroundView)
+        labelContainerBackgroundView.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(view)
+            make.top.equalTo(slidersContainerView.snp.bottom)
+            make.bottom.equalTo(x.snp.top)
+        }
+        labelContainerView.sendSubviewToBack(labelContainerBackgroundView)
+        
         let footerLabel = UILabel()
         footerLabel.text = "P:E Ratio"
-        footerLabel.font = UIFont.systemFont(ofSize: 6, weight: .thin)
+        footerLabel.font = UIFont.systemFont(ofSize: 8, weight: .thin)
         footerLabel.textColor = .gray
         footerLabel.textAlignment = .center
         containerView.addArrangedSubview(footerLabel)
