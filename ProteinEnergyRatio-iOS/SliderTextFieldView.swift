@@ -97,9 +97,9 @@ class SliderTextFieldView: UIView {
 
         let backgroundColor = CABasicAnimation(keyPath: "backgroundColor")
         backgroundColor.fromValue = UIColor(named: "customBackgroundColor")?.cgColor
-        backgroundColor.toValue = UIColor.systemYellow.cgColor
+        backgroundColor.toValue = UIColor(named: "customTextFieldHighlight")?.cgColor
         backgroundColor.duration = 0.5
-        textField.layer.backgroundColor = UIColor.systemYellow.cgColor
+        textField.layer.backgroundColor = UIColor(named: "customTextFieldHighlight")?.cgColor
         textField.layer.add(backgroundColor, forKey: "backgroundColor")
     }
     
@@ -112,7 +112,7 @@ class SliderTextFieldView: UIView {
         textField.layer.add(color, forKey: "borderColor")
 
         let backgroundColor = CABasicAnimation(keyPath: "backgroundColor")
-        backgroundColor.fromValue = UIColor.systemYellow.cgColor
+        backgroundColor.fromValue = UIColor(named: "customTextFieldHighlight")?.cgColor
         backgroundColor.toValue = UIColor(named: "customBackgroundColor")?.cgColor
         backgroundColor.duration = 0.5
         textField.layer.backgroundColor = UIColor(named: "customBackgroundColor")?.cgColor
