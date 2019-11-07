@@ -11,31 +11,17 @@
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="hfU-Sa-42g">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="hfU-Sa-42g" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="1he-CU-Xa2"/>
-                            <constraint firstItem="hfU-Sa-42g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="CiM-Ji-IAp"/>
-                            <constraint firstItem="hfU-Sa-42g" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="QDY-aC-6gz"/>
-                            <constraint firstAttribute="bottom" secondItem="hfU-Sa-42g" secondAttribute="bottom" id="QJ0-yy-P5G"/>
-                        </constraints>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="launch" width="588" height="1260"/>
-    </resources>
 </document>
