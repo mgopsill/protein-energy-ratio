@@ -46,21 +46,29 @@ public class MainViewController: UIViewController {
         super.viewDidLoad()
         bindUI()
         setupViews()
-        view.backgroundColor = .white
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = UIColor(named: "customBackgroundColor")
+        } else {
+            view.backgroundColor = UIColor(named: "customBackgroundColor")
+        }
         title = "Protein : Energy"
     }
     
     private func setupViews() {
-        navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
+        if #available(iOS 13.0, *) {
+            navigationController?.navigationBar.backgroundColor = UIColor.systemGray5
+            navigationController?.navigationBar.barTintColor = UIColor.systemGray5
+            UIApplication.shared.statusBarUIView?.backgroundColor = UIColor.systemGray5
+        } else {
+//            navigationController?.navigationBar.layer.shadowColor = UIColor.systemGray2.cgColor
+        }
+        
+        navigationController?.navigationBar.layer.masksToBounds = false
         navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         navigationController?.navigationBar.layer.shadowRadius = 4.0
-        navigationController?.navigationBar.layer.shadowOpacity = 0.5
-        navigationController?.navigationBar.layer.masksToBounds = false
-        navigationController?.navigationBar.backgroundColor = UIColor(red: 100/256, green: 224/256, blue: 255/256, alpha: 1)
-        navigationController?.navigationBar.barTintColor = UIColor(red: 100/256, green: 224/256, blue: 255/256, alpha: 1)
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
-        UIApplication.shared.statusBarUIView?.backgroundColor = UIColor(red: 100/256, green: 224/256, blue: 255/256, alpha: 1)
+        navigationController?.navigationBar.layer.shadowOpacity = 0.2
+        navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
+
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEditing)))
         
@@ -103,7 +111,7 @@ public class MainViewController: UIViewController {
         let nut = LabelsView(leftText: "Nutrional Vector °:", rightText: "🧭", centralLabel: nutritionalVectorLabel)
         labelContainerView.addArrangedSubview(nut)
 
-        let x = SeperatorView()
+        let x = UIView()
         containerView.addArrangedSubview(x)
         
         let graphContainerView = GraphContainerView(height: view.frame.width * 0.8)
@@ -116,7 +124,11 @@ public class MainViewController: UIViewController {
         }
         
         let labelContainerBackgroundView = UIView()
-        labelContainerBackgroundView.backgroundColor = UIColor(red: 100/256, green: 224/256, blue: 255/256, alpha: 1)
+        if #available(iOS 13.0, *) {
+            labelContainerBackgroundView.backgroundColor = UIColor(named: "customLabelsBackground")
+        } else {
+            labelContainerBackgroundView.backgroundColor = UIColor(red: 100/256, green: 224/256, blue: 255/256, alpha: 1)
+        }
         labelContainerBackgroundView.layer.cornerRadius = 10
         labelContainerView.addSubview(labelContainerBackgroundView)
         labelContainerBackgroundView.snp.makeConstraints { make in

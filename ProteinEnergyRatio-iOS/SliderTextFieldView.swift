@@ -29,6 +29,11 @@ class SliderTextFieldView: UIView {
     private func setupUI() {
         translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = .yellow
+        if #available(iOS 13.0, *) {
+            textField.backgroundColor = .systemYellow
+        } else {
+            textField.backgroundColor = .yellow
+        }
         slider.maximumValue = 50.0
         slider.minimumValue = 0.0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -37,7 +42,11 @@ class SliderTextFieldView: UIView {
         textField.keyboardType = .decimalPad
         textField.textAlignment = .center
         textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.lightGray.cgColor
+        if #available(iOS 13.0, *) {
+            textField.layer.borderColor = UIColor.systemGray3.cgColor
+        } else {
+            textField.layer.borderColor = UIColor.lightGray.cgColor
+        }
         textField.layer.cornerRadius = 4.0
         addSubview(label)
         addSubview(slider)
@@ -96,10 +105,10 @@ class SliderTextFieldView: UIView {
         textField.layer.add(color, forKey: "borderColor")
         
         let backgroundColor = CABasicAnimation(keyPath: "backgroundColor")
-        backgroundColor.fromValue = UIColor.yellow.cgColor
-        backgroundColor.toValue = UIColor.white.cgColor
+        backgroundColor.fromValue = UIColor.systemYellow.cgColor
+        backgroundColor.toValue = UIColor(named: "customBackgroundColor")?.cgColor
         backgroundColor.duration = 0.5
-        textField.layer.backgroundColor = UIColor.white.cgColor
+        textField.layer.backgroundColor = UIColor(named: "customBackgroundColor")?.cgColor
         textField.layer.add(backgroundColor, forKey: "backgroundColor")
     }
     
@@ -112,10 +121,10 @@ class SliderTextFieldView: UIView {
         textField.layer.add(color, forKey: "borderColor")
         
         let backgroundColor = CABasicAnimation(keyPath: "backgroundColor")
-        backgroundColor.fromValue = UIColor.white.cgColor
-        backgroundColor.toValue = UIColor.yellow.cgColor
+        backgroundColor.fromValue = UIColor(named: "customBackgroundColor")?.cgColor
+        backgroundColor.toValue = UIColor.systemYellow.cgColor
         backgroundColor.duration = 0.5
-        textField.layer.backgroundColor = UIColor.yellow.cgColor
+        textField.layer.backgroundColor = UIColor.systemYellow.cgColor
         textField.layer.add(backgroundColor, forKey: "backgroundColor")
     }
     

@@ -65,6 +65,7 @@ public class GraphView: UIView {
         
         arrowLabel.text = "P:E"
         arrowLabel.font = UIFont.boldSystemFont(ofSize: 8)
+        arrowLabel.textColor = UIColor.black
         cont.addSubview(arrowLabel)
         arrowLabel.snp.makeConstraints { make in
             make.trailing.equalTo(arrow.snp.trailing).inset(6)

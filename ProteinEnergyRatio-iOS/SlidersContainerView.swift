@@ -26,18 +26,22 @@ class SlidersContainerView: UIStackView {
     }
     
     private func setupViews() {
-        for view in views {
+        for (index, view) in views.enumerated() {
             addArrangedSubview(view)
-            addArrangedSubview(SeperatorView())
+            if index == views.count-1 {
+                addArrangedSubview(SeperatorView(backgroundColor: .clear))
+            } else {
+                addArrangedSubview(SeperatorView())
+            }
         }
     }
 }
 
 
 class SeperatorView: UIView {
-    override init(frame: CGRect = CGRect.zero) {
+    init(frame: CGRect = CGRect.zero, backgroundColor: UIColor = .cyan) {
         super.init(frame: frame)
-        backgroundColor = .cyan
+        self.backgroundColor = backgroundColor
         heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
     
