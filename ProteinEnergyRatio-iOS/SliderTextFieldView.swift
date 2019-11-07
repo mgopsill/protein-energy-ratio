@@ -28,12 +28,7 @@ class SliderTextFieldView: UIView {
 
     private func setupUI() {
         translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = .yellow
-        if #available(iOS 13.0, *) {
-            textField.backgroundColor = .systemYellow
-        } else {
-            textField.backgroundColor = .yellow
-        }
+        textField.backgroundColor = UIColor(named: "customBackgroundColor")
         slider.maximumValue = 50.0
         slider.minimumValue = 0.0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -42,11 +37,7 @@ class SliderTextFieldView: UIView {
         textField.keyboardType = .decimalPad
         textField.textAlignment = .center
         textField.layer.borderWidth = 1
-        if #available(iOS 13.0, *) {
-            textField.layer.borderColor = UIColor.systemGray3.cgColor
-        } else {
-            textField.layer.borderColor = UIColor.lightGray.cgColor
-        }
+        textField.layer.borderColor = UIColor.clear.cgColor
         textField.layer.cornerRadius = 4.0
         addSubview(label)
         addSubview(slider)
@@ -98,33 +89,33 @@ class SliderTextFieldView: UIView {
     
     private func startEditingAnimation() {
         let color = CABasicAnimation(keyPath: "borderColor")
-        color.fromValue = UIColor.lightGray.cgColor
-        color.toValue = UIColor.black.cgColor
-        color.duration = 0.5
-        textField.layer.borderColor = UIColor.black.cgColor
-        textField.layer.add(color, forKey: "borderColor")
-        
-        let backgroundColor = CABasicAnimation(keyPath: "backgroundColor")
-        backgroundColor.fromValue = UIColor.systemYellow.cgColor
-        backgroundColor.toValue = UIColor(named: "customBackgroundColor")?.cgColor
-        backgroundColor.duration = 0.5
-        textField.layer.backgroundColor = UIColor(named: "customBackgroundColor")?.cgColor
-        textField.layer.add(backgroundColor, forKey: "backgroundColor")
-    }
-    
-    private func stopEditingAnimation() {
-        let color = CABasicAnimation(keyPath: "borderColor")
-        color.fromValue = UIColor.black.cgColor
+        color.fromValue = UIColor(named: "customBackgroundColor")?.cgColor
         color.toValue = UIColor.lightGray.cgColor
         color.duration = 0.5
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.add(color, forKey: "borderColor")
-        
+
         let backgroundColor = CABasicAnimation(keyPath: "backgroundColor")
         backgroundColor.fromValue = UIColor(named: "customBackgroundColor")?.cgColor
         backgroundColor.toValue = UIColor.systemYellow.cgColor
         backgroundColor.duration = 0.5
         textField.layer.backgroundColor = UIColor.systemYellow.cgColor
+        textField.layer.add(backgroundColor, forKey: "backgroundColor")
+    }
+    
+    private func stopEditingAnimation() {
+        let color = CABasicAnimation(keyPath: "borderColor")
+        color.fromValue = UIColor.lightGray.cgColor
+        color.toValue = UIColor(named: "customBackgroundColor")?.cgColor
+        color.duration = 0.5
+        textField.layer.borderColor = UIColor(named: "customBackgroundColor")?.cgColor
+        textField.layer.add(color, forKey: "borderColor")
+
+        let backgroundColor = CABasicAnimation(keyPath: "backgroundColor")
+        backgroundColor.fromValue = UIColor.systemYellow.cgColor
+        backgroundColor.toValue = UIColor(named: "customBackgroundColor")?.cgColor
+        backgroundColor.duration = 0.5
+        textField.layer.backgroundColor = UIColor(named: "customBackgroundColor")?.cgColor
         textField.layer.add(backgroundColor, forKey: "backgroundColor")
     }
     
