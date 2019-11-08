@@ -58,9 +58,9 @@ public class MainViewController: UIViewController {
         if #available(iOS 13.0, *) {
             navigationController?.navigationBar.backgroundColor = UIColor.systemGray5
             navigationController?.navigationBar.barTintColor = UIColor.systemGray5
-            UIApplication.shared.statusBarUIView?.backgroundColor = UIColor.systemGray5
         } else {
-//            navigationController?.navigationBar.layer.shadowColor = UIColor.systemGray2.cgColor
+            navigationController?.navigationBar.backgroundColor = UIColor.lightGray
+            navigationController?.navigationBar.barTintColor = UIColor.lightGray
         }
         
         navigationController?.navigationBar.layer.masksToBounds = false
@@ -124,11 +124,7 @@ public class MainViewController: UIViewController {
         }
         
         let labelContainerBackgroundView = UIView()
-        if #available(iOS 13.0, *) {
-            labelContainerBackgroundView.backgroundColor = UIColor(named: "customLabelsBackground")
-        } else {
-            labelContainerBackgroundView.backgroundColor = UIColor(red: 100/256, green: 224/256, blue: 255/256, alpha: 1)
-        }
+        labelContainerBackgroundView.backgroundColor = UIColor(named: "customLabelsBackground")
         labelContainerBackgroundView.layer.cornerRadius = 10
         labelContainerView.addSubview(labelContainerBackgroundView)
         labelContainerBackgroundView.snp.makeConstraints { make in
