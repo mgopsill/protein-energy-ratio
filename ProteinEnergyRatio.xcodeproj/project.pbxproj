@@ -78,7 +78,7 @@
 		4D6B1D49236719A3006C30B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D6B1D5E23671B7A006C30B9 /* ProteinEnergyRatio.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ProteinEnergyRatio.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		4D6B1D6123672330006C30B9 /* SliderTextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SliderTextFieldView.swift; path = "ProteinEnergyRatio-iOS/SliderTextFieldView.swift"; sourceTree = SOURCE_ROOT; };
-		4D8070FE2328D7B70073C578 /* ProteinEnergyRatio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProteinEnergyRatio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D8070FE2328D7B70073C578 /* P:E Ratio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "P:E Ratio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D8071012328D7B70073C578 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D8071032328D7B70073C578 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4D8071082328D7B90073C578 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 		4D8070FF2328D7B70073C578 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4D8070FE2328D7B70073C578 /* ProteinEnergyRatio.app */,
+				4D8070FE2328D7B70073C578 /* P:E Ratio.app */,
 				4D6B1D38236719A3006C30B9 /* ProteinEnergyRatio_iOS.framework */,
 				4D6B1D40236719A3006C30B9 /* ProteinEnergyRatio-iOSTests.xctest */,
 			);
@@ -304,7 +304,7 @@
 			);
 			name = ProteinEnergyRatio;
 			productName = ProteinEnergyRatio;
-			productReference = 4D8070FE2328D7B70073C578 /* ProteinEnergyRatio.app */;
+			productReference = 4D8070FE2328D7B70073C578 /* P:E Ratio.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -733,8 +733,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mgopsill.ProteinEnergyRatio;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "P:E Ratio";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -753,8 +754,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mgopsill.ProteinEnergyRatio;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "P:E Ratio";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
