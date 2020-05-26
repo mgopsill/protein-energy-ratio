@@ -15,7 +15,7 @@ struct LineView: View {
             HStack {
                 Spacer()
                 Text(text)
-                    .padding([.bottom], 30)
+                    .padding([.bottom], 16)
                     .font(.caption)
                     .foregroundColor(.gray)
                 Spacer()
